@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0c0c0d; }
+  body { font-family: Archivo, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #ec3013; text-decoration: none; }
+  a:hover { color: #ff4d2e; }
+  ::selection { background: #ec3013; color: #fff; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 28px; background: transparent; cursor: pointer; margin: 0; }
+  input[type=range]::-webkit-slider-runnable-track { height: 5px; border-radius: 999px; background: rgba(255,255,255,0.14); }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; margin-top: -9px; border-radius: 999px; background: #ec3013; border: 2px solid #0c0c0d; box-shadow: 0 0 0 1px rgba(236,48,19,0.5), 0 4px 14px rgba(236,48,19,0.4); }
+  input[type=range]::-moz-range-track { height: 5px; border-radius: 999px; background: rgba(255,255,255,0.14); }
+  input[type=range]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 999px; background: #ec3013; border: 2px solid #0c0c0d; }
+  input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+</style>
+</helmet>
+
+<div data-nav-root="" style="background:#0c0c0d;color:#f5f4f2;min-height:100vh;overflow-x:hidden">
+
+  <div style="position:sticky;top:0;z-index:50;background:rgba(12,12,13,0.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.08)">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="index.html" aria-label="GM Media" style="display:flex;align-items:center;flex:none"><img src="assets/gm-media-logo.webp" alt="GM Media" style="height:27px;width:auto;display:block" /></a>
+      <div style="display:flex;align-items:center;gap:26px;flex-wrap:nowrap">
+        <sc-if value="{{ wideNav }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;align-items:center;gap:26px">
+            <a href="gages-story.html" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">Gage's Story</a>
+            <a href="client-breakdowns.html" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">Breakdowns</a>
+            <a href="index.html#case-studies" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">Case Studies</a>
+            <a href="financial-model.html" style="color:#f5f4f2;font-size:13.5px;font-weight:700;white-space:nowrap">Financial Model</a>
+            <a href="index.html#faq" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">FAQ</a>
+          </div>
+        </sc-if>
+        <a href="#book" style="background:#ec3013;color:#fff;font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:14px 22px;border-radius:999px;box-shadow:0 6px 20px rgba(236,48,19,0.28);white-space:nowrap" style-hover="background:#ff4d2e;color:#fff">Book a Call</a>
+        <sc-if value="{{ narrowNav }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="width:46px;height:46px;flex:none;border-radius:999px;border:1px solid rgba(255,255,255,0.22);background:transparent;color:#f5f4f2;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px" style-hover="background:rgba(255,255,255,0.06)">
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+          </button>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid rgba(255,255,255,0.08);padding:14px 24px 22px;display:flex;flex-direction:column;gap:2px">
+        <a href="gages-story.html" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">Gage's Story</a>
+            <a href="client-breakdowns.html" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">Breakdowns</a>
+        <a href="index.html#case-studies" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">Case Studies</a>
+        <a href="financial-model.html" onClick="{{ closeMenu }}" style="color:#f5f4f2;font-size:16px;font-weight:700;padding:14px 0;min-height:44px;display:flex;align-items:center">Financial Model</a>
+        <a href="index.html#faq" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">FAQ</a>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="position:relative;overflow:hidden;background:#0c0c0d">
+    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(100% 80% at 80% 0%, rgba(236,48,19,0.24) 0%, rgba(236,48,19,0.08) 36%, rgba(12,12,13,0) 70%)"></div>
+    <div style="position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:64px 24px 36px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <span style="width:26px;height:1px;background:#ec3013"></span>
+        <span style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;line-height:1.5">Financial model</span>
+      </div>
+      <h1 style="margin:0;font-weight:900;font-size:clamp(28px,4.2vw,54px);line-height:1.04;letter-spacing:-0.03em;max-width:880px;text-wrap:balance"><span style="color:#f5f4f2;text-shadow:0 0 24px rgba(255,255,255,0.2)">We don't replace your marketing. </span><span style="color:#ec3013;text-shadow:0 0 24px rgba(236,48,19,0.35), 0 0 60px rgba(236,48,19,0.18)">We make all of it work harder.</span></h1>
+      <p style="margin:22px 0 0;font-size:17.5px;line-height:1.65;color:rgba(255,255,255,0.72);max-width:640px;text-wrap:pretty">Content is the layer that sits on top of everything you already run. Your ads, your referrals, your SEO — they all convert better when patients already recognize you. Put your numbers in and see what that layer adds.</p>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:0 24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:20px;align-items:start">
+
+      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:28px 26px">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:22px">
+            <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.45)">Your practice</div>
+            <button type="button" onClick="{{ reset }}" style="background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);font-size:11px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:8px 14px;border-radius:999px;cursor:pointer;min-height:34px" style-hover="background:rgba(255,255,255,0.07);color:#f5f4f2">Reset</button>
+          </div>
+          <label for="in-rev" style="display:block;font-size:15px;font-weight:700;color:#f5f4f2;margin-bottom:10px">Monthly collections</label>
+          <div style="display:flex;align-items:center;gap:6px;background:#0c0c0d;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 14px;margin-bottom:24px">
+            <span style="font-size:17px;font-weight:800;color:rgba(255,255,255,0.45)">$</span>
+            <input id="in-rev" type="number" min="0" max="5000000" step="1000" value="{{ revenue }}" onChange="{{ setRevenue }}" onBlur="{{ clamp }}" style="flex:1;min-width:0;background:transparent;border:0;outline:none;color:#f5f4f2;font-size:17px;font-weight:800;padding:0;font-family:Archivo,sans-serif" />
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:2px">
+            <span style="font-size:15px;font-weight:700;color:#f5f4f2">Share of revenue to invest</span>
+            <span style="font-size:17px;font-weight:900;color:#ec3013">{{ pctLabel }}</span>
+          </div>
+          <input type="range" min="1" max="15" step="0.5" value="{{ pct }}" onChange="{{ setPct }}" aria-label="Percent of revenue to invest in marketing" />
+          <div style="font-size:12.5px;line-height:1.6;color:rgba(255,255,255,0.45)">Hold steady 3&ndash;5% &middot; Grow 5&ndash;7% &middot; <span style="color:#ec3013;font-weight:700">Dominate 7&ndash;10%</span></div>
+        </div>
+
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:28px 26px">
+          <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.45);margin-bottom:22px">What you already run</div>
+          <label for="in-spend" style="display:block;font-size:15px;font-weight:700;color:#f5f4f2;margin-bottom:4px">Marketing spend a month</label>
+          <div style="font-size:12.5px;color:rgba(255,255,255,0.45);margin-bottom:10px;line-height:1.5">Ads, mailers, SEO, referral programs &mdash; all in. Keep every bit of it.</div>
+          <div style="display:flex;align-items:center;gap:6px;background:#0c0c0d;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 14px;margin-bottom:22px">
+            <span style="font-size:17px;font-weight:800;color:rgba(255,255,255,0.45)">$</span>
+            <input id="in-spend" type="number" min="0" max="200000" step="100" value="{{ spend }}" onChange="{{ setSpend }}" onBlur="{{ clamp }}" style="flex:1;min-width:0;background:transparent;border:0;outline:none;color:#f5f4f2;font-size:17px;font-weight:800;padding:0;font-family:Archivo,sans-serif" />
+          </div>
+          <label for="in-cases" style="display:block;font-size:15px;font-weight:700;color:#f5f4f2;margin-bottom:4px">New cases a month from it</label>
+          <div style="font-size:12.5px;color:rgba(255,255,255,0.45);margin-bottom:10px;line-height:1.5">What that spend brings you today, before content.</div>
+          <div style="background:#0c0c0d;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 14px">
+            <input id="in-cases" type="number" min="0" max="500" step="1" value="{{ cases }}" onChange="{{ setCases }}" onBlur="{{ clamp }}" style="width:100%;background:transparent;border:0;outline:none;color:#f5f4f2;font-size:17px;font-weight:800;padding:0;font-family:Archivo,sans-serif" />
+          </div>
+        </div>
+
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:28px 26px">
+          <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.45);margin-bottom:22px">The case</div>
+          <label for="in-case" style="display:block;font-size:15px;font-weight:700;color:#f5f4f2;margin-bottom:4px">Average case value</label>
+          <div style="font-size:12.5px;color:rgba(255,255,255,0.45);margin-bottom:10px;line-height:1.5">What one of those cases bills out at.</div>
+          <div style="display:flex;align-items:center;gap:6px;background:#0c0c0d;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 14px">
+            <span style="font-size:17px;font-weight:800;color:rgba(255,255,255,0.45)">$</span>
+            <input id="in-case" type="number" min="0" max="200000" step="100" value="{{ caseValue }}" onChange="{{ setCaseValue }}" onBlur="{{ clamp }}" style="flex:1;min-width:0;background:transparent;border:0;outline:none;color:#f5f4f2;font-size:17px;font-weight:800;padding:0;font-family:Archivo,sans-serif" />
+          </div>
+        </div>
+
+        <div style="background:#17171a;border:1px solid rgba(236,48,19,0.3);border-radius:22px;padding:28px 26px">
+          <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#ec3013;margin-bottom:22px">The layer we add</div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:2px">
+            <span style="font-size:15px;font-weight:700;color:#f5f4f2">Our fee</span>
+            <span style="font-size:17px;font-weight:900;color:#ec3013">{{ feeLabel }}<span style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.45)"> /mo</span></span>
+          </div>
+          <input type="range" min="2500" max="5000" step="250" value="{{ fee }}" onChange="{{ setFee }}" aria-label="Our monthly fee" />
+          <div style="font-size:12.5px;line-height:1.6;color:rgba(255,255,255,0.45);margin-bottom:24px">Scaled to practice size, case mix and shoot volume. 12-month engagement.</div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:2px">
+            <span style="font-size:15px;font-weight:700;color:#f5f4f2">Cases the content layer adds</span>
+            <span style="font-size:17px;font-weight:900;color:#ec3013">{{ projected }}</span>
+          </div>
+          <input type="range" min="1" max="20" step="1" value="{{ projected }}" onChange="{{ setProjected }}" aria-label="Cases we add per month" />
+          <div style="font-size:12.5px;line-height:1.6;color:rgba(255,255,255,0.45)">Set it as low as you like &mdash; these are cases on top of what you already get.</div>
+        </div>
+
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+
+        <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.45);padding:8px 0 0">The math</div>
+
+        <div style="background:rgba(236,48,19,0.07);border:1px solid rgba(236,48,19,0.3);border-radius:22px;padding:26px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:24px;align-items:start">
+          <div>
+            <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#ec3013;margin-bottom:12px">Budget available</div>
+            <div style="font-size:clamp(30px,3.8vw,42px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#f5f4f2;white-space:nowrap">{{ budgetLabel }}</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.55);margin-top:8px;line-height:1.5">a month, at {{ pctLabel }} of collections</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div>
+              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.4);margin-bottom:5px">You spend now</div>
+              <div style="font-size:20px;font-weight:900;letter-spacing:-0.02em;color:#f5f4f2">{{ spendLabel }} &middot; {{ spendPctLabel }}</div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.4);margin-bottom:5px">Room left</div>
+              <div style="font-size:20px;font-weight:900;letter-spacing:-0.02em;color:#f5f4f2">{{ headroomLabel }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+          <div>
+            <div style="font-size:15px;font-weight:800;color:#f5f4f2;letter-spacing:-0.01em">Average case value</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:5px;line-height:1.5">The same no matter which channel brings you the patient.</div>
+          </div>
+          <div style="font-size:clamp(26px,3vw,34px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#f5f4f2;white-space:nowrap">{{ caseValueLabel }}</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px">
+          <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:26px 24px">
+            <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.45);margin-bottom:20px">What you run today</div>
+            <div style="font-size:clamp(28px,3.4vw,38px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#f5f4f2;white-space:nowrap">{{ theirRatioLabel }}</div>
+            <div style="font-size:12.5px;color:rgba(255,255,255,0.5);margin-top:8px">case value to cost per case</div>
+            <div style="border-top:1px solid rgba(255,255,255,0.08);margin-top:20px;padding-top:18px;display:flex;justify-content:space-between;gap:14px">
+              <div>
+                <div style="font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:5px">Cost / case</div>
+                <div style="font-size:19px;font-weight:900;letter-spacing:-0.02em;color:#f5f4f2">{{ theirCacLabel }}</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:5px">Cases / mo</div>
+                <div style="font-size:19px;font-weight:900;letter-spacing:-0.02em;color:#f5f4f2">{{ casesLabel }}</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#17171a;border:1px solid rgba(236,48,19,0.45);border-radius:22px;padding:26px 24px;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(80% 100% at 100% 0%, rgba(236,48,19,0.14) 0%, rgba(12,12,13,0) 65%)"></div>
+            <div style="position:relative">
+              <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#ec3013;margin-bottom:20px">What content adds</div>
+              <div style="font-size:clamp(28px,3.4vw,38px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#f5f4f2;white-space:nowrap;text-shadow:0 0 26px rgba(236,48,19,0.28)">{{ ourRatioLabel }}</div>
+              <div style="font-size:12.5px;color:rgba(255,255,255,0.5);margin-top:8px">case value to cost per case</div>
+              <div style="border-top:1px solid rgba(255,255,255,0.08);margin-top:20px;padding-top:18px;display:flex;justify-content:space-between;gap:14px">
+                <div>
+                  <div style="font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#ec3013;margin-bottom:5px">Cost / case</div>
+                  <div style="font-size:19px;font-weight:900;letter-spacing:-0.02em;color:#f5f4f2">{{ ourCacLabel }}</div>
+                </div>
+                <div style="text-align:right">
+                  <div style="font-size:11px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:#ec3013;margin-bottom:5px">Cases / mo</div>
+                  <div style="font-size:19px;font-weight:900;letter-spacing:-0.02em;color:#f5f4f2">{{ projectedLabel }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:22px;padding:28px">
+          <div style="font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:rgba(255,255,255,0.45);margin-bottom:24px">Everything together, once content is running</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px">
+            <div>
+              <div style="font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#f5f4f2;white-space:nowrap">{{ blendedRatioLabel }}</div>
+              <div style="font-size:12.5px;color:rgba(255,255,255,0.5);margin-top:8px;line-height:1.45">blended across every channel</div>
+            </div>
+            <div>
+              <div style="font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#ec3013;white-space:nowrap">{{ totalCasesLabel }}</div>
+              <div style="font-size:12.5px;color:rgba(255,255,255,0.5);margin-top:8px;line-height:1.45">total new cases a month</div>
+            </div>
+            <div>
+              <div style="font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:{{ profitColor }};white-space:nowrap">{{ addedProfitLabel }}</div>
+              <div style="font-size:12.5px;color:rgba(255,255,255,0.5);margin-top:8px;line-height:1.45">added revenue a year, net of our fee</div>
+            </div>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,0.08);margin-top:24px;padding-top:20px;font-size:13px;color:rgba(255,255,255,0.5);line-height:1.6">Benchmark: <span style="color:#f5f4f2;font-weight:800">3 : 1</span> is healthy &middot; <span style="color:#ec3013;font-weight:800">5 : 1</span> or better is excellent. Everything here sits on top of what you already run.</div>
+        </div>
+
+        <div style="background:rgba(236,48,19,0.08);border:1px solid rgba(236,48,19,0.35);border-radius:22px;padding:28px">
+          <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">In short</div>
+          <p style="margin:0;font-size:16.5px;line-height:1.7;color:#f5f4f2;font-weight:600;text-wrap:pretty">{{ summary }}</p>
+        </div>
+
+        <p style="margin:0;font-size:13px;line-height:1.7;color:rgba(255,255,255,0.42);text-wrap:pretty">Nothing here assumes you cut a single dollar of what you already run &mdash; every figure treats content as additive. Cost per case is what you pay to acquire one case through a channel. Blended combines your current spend with our fee across all cases. Added revenue is added cases &times; average case value, minus our annual fee. Estimates to frame the decision, not a guarantee.</p>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="book" style="margin-top:72px;background:#ec3013;padding:80px 24px">
+    <div style="max-width:1180px;margin:0 auto;text-align:center">
+      <h2 style="margin:0 auto 18px;font-weight:900;font-size:clamp(28px,4.6vw,50px);line-height:1.04;letter-spacing:-0.02em;color:#fff;max-width:800px;text-wrap:balance">Time to start building your brand.</h2>
+      <p style="margin:0 auto 34px;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.85);max-width:560px">30 minutes. We look at your practice and see if this system actually makes sense to implement. If it doesn't, we'll tell you.</p>
+      <a href="#calendar" style="display:inline-block;background:#0c0c0d;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:20px 40px;border-radius:999px;box-shadow:0 12px 34px rgba(0,0,0,0.3)" style-hover="background:#17171a;color:#fff">Book Your Call</a>
+      <div id="calendar" style="margin-top:40px">
+        <div style="background:#fff;border-radius:20px;overflow:hidden;max-width:900px;margin:0 auto;box-shadow:0 18px 50px rgba(0,0,0,0.28)">
+          <iframe src="https://calendly.com/d/cymv-7md-9sg/gm-media-discovery-call?hide_gdpr_banner=1&amp;text_color=000000&amp;primary_color=ff1700" title="Book a discovery call with GM Media" loading="lazy" style="width:100%;min-width:320px;height:700px;border:0;display:block"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.08)">
+    <div style="max-width:1180px;margin:0 auto;padding:44px 24px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center"><img src="assets/gm-media-logo.webp" alt="GM Media" style="height:30px;width:auto;display:block;opacity:0.85" /></div>
+      <div style="display:flex;flex-wrap:wrap;gap:22px">
+        <a href="gages-story.html" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Gage's Story</a>
+            <a href="client-breakdowns.html" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Breakdowns</a>
+        <a href="index.html#case-studies" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Case Studies</a>
+        <a href="financial-model.html" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Financial Model</a>
+        <a href="index.html#faq" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">FAQ</a>
+      </div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5)">© 2026 GM Media</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultFee&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5000,&quot;min&quot;:2500,&quot;max&quot;:5000,&quot;step&quot;:250,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Model&quot;}}">
+const DEFAULTS = {
+  revenue: 120000,
+  pct: 7,
+  spend: 4000,
+  cases: 2,
+  caseValue: 12000,
+  fee: 5000,
+  projected: 2
+};
+
+const RANGES = {
+  'in-rev': ['revenue', 0, 5000000],
+  'in-spend': ['spend', 0, 200000],
+  'in-cases': ['cases', 0, 500],
+  'in-case': ['caseValue', 0, 200000]
+};
+
+class Component extends DCLogic {
+  state = Object.assign({ wide: true, menuOpen: false }, DEFAULTS, { fee: 0 });
+
+  componentDidMount() {
+    this.measure = () => {
+      const w = (this.rootEl && this.rootEl.clientWidth) || window.innerWidth;
+      const wide = w >= 900;
+      if (wide !== this.state.wide) this.setState({ wide, menuOpen: false });
+    };
+    this.rootEl = document.querySelector('[data-nav-root]') || document.body;
+    this.measure();
+    window.addEventListener('resize', this.measure);
+    if (window.ResizeObserver) {
+      this.ro = new ResizeObserver(this.measure);
+      this.ro.observe(this.rootEl);
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.measure);
+    if (this.ro) this.ro.disconnect();
+  }
+
+  num(key, max) {
+    return e => {
+      const raw = parseFloat(e.target.value);
+      const v = isNaN(raw) ? 0 : Math.min(max, Math.max(0, raw));
+      this.setState({ [key]: v });
+    };
+  }
+
+  clampField(e) {
+    const spec = RANGES[e.target.id];
+    if (!spec) return;
+    const raw = parseFloat(e.target.value);
+    const v = isNaN(raw) ? spec[1] : Math.min(spec[2], Math.max(spec[1], raw));
+    this.setState({ [spec[0]]: v });
+  }
+
+  renderVals() {
+    const s = Object.assign({}, this.state, {
+      fee: this.state.fee || this.props.defaultFee || DEFAULTS.fee
+    });
+    const money = n => {
+      const a = Math.abs(n);
+      const sign = n < 0 ? '-' : '';
+      if (a >= 1000000) return sign + '$' + (a / 1000000).toFixed(a >= 10000000 ? 0 : 1).replace(/\.0$/, '') + 'M';
+      if (a >= 10000) return sign + '$' + Math.round(a / 1000) + 'k';
+      return sign + '$' + Math.round(a).toLocaleString('en-US');
+    };
+    const ratio = (profit, cost) => {
+      if (!cost) return profit > 0 ? '∞ : 1' : '—';
+      const r = profit / cost;
+      return (r >= 10 ? Math.round(r) : Math.round(r * 10) / 10) + ' : 1';
+    };
+
+    const budget = s.revenue * (s.pct / 100);
+    const headroom = budget - s.spend;
+    const spendPctOfRev = s.revenue > 0 ? (s.spend / s.revenue) * 100 : 0;
+
+    const theirCac = s.cases > 0 ? s.spend / s.cases : 0;
+    const ourCac = s.projected > 0 ? s.fee / s.projected : 0;
+
+    const totalCases = s.cases + s.projected;
+    const totalCost = s.spend + s.fee;
+    const blendedCac = totalCases > 0 ? totalCost / totalCases : 0;
+
+    const addedProfitYear = s.projected * s.caseValue * 12 - s.fee * 12;
+
+    const summary = addedProfitYear >= 0
+      ? 'Keep everything you run now. Add ' + money(s.fee) + ' a month for content and ' + s.projected + ' more case' + (s.projected === 1 ? '' : 's') +
+        ' a month lands on top — about ' + money(ourCac) + ' to acquire each one, against ' + money(s.caseValue) + ' of case value. That\'s ' +
+        money(addedProfitYear) + ' more over the year.'
+      : 'At ' + s.projected + ' added case' + (s.projected === 1 ? '' : 's') + ' a month, the revenue doesn\'t cover the ' + money(s.fee) +
+        ' fee yet. Worth revisiting the numbers on a call before starting.';
+
+    return {
+      wideNav: s.wide,
+      narrowNav: !s.wide,
+      menuOpen: !s.wide && s.menuOpen,
+      toggleMenu: () => this.setState(x => ({ menuOpen: !x.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+
+      revenue: s.revenue,
+      pct: s.pct,
+      spend: s.spend,
+      cases: s.cases,
+      caseValue: s.caseValue,
+      fee: s.fee,
+      projected: s.projected,
+
+      setRevenue: this.num('revenue', 5000000),
+      setSpend: this.num('spend', 200000),
+      setCases: this.num('cases', 500),
+      setCaseValue: this.num('caseValue', 200000),
+      setPct: e => this.setState({ pct: parseFloat(e.target.value) || 1 }),
+      setFee: e => this.setState({ fee: parseFloat(e.target.value) || 2500 }),
+      setProjected: e => this.setState({ projected: parseInt(e.target.value, 10) || 1 }),
+      clamp: e => this.clampField(e),
+      reset: () => this.setState(DEFAULTS),
+
+      pctLabel: (Math.round(s.pct * 10) / 10) + '%',
+      feeLabel: money(s.fee),
+      budgetLabel: money(budget),
+      spendLabel: money(s.spend),
+      spendPctLabel: (Math.round(spendPctOfRev * 10) / 10) + '% of collections',
+      headroomLabel: headroom >= 0 ? money(headroom) + ' unspent' : money(-headroom) + ' over',
+      caseValueLabel: money(s.caseValue),
+      casesLabel: s.cases + '',
+      projectedLabel: s.projected + '',
+      theirCacLabel: s.cases > 0 ? money(theirCac) : '—',
+      ourCacLabel: money(ourCac),
+      totalCasesLabel: totalCases + '',
+      theirRatioLabel: ratio(s.caseValue, theirCac),
+      ourRatioLabel: ratio(s.caseValue, ourCac),
+      blendedRatioLabel: ratio(s.caseValue, blendedCac),
+      addedCasesLabel: '+' + s.projected,
+      addedProfitLabel: (addedProfitYear >= 0 ? '+' : '') + money(addedProfitYear),
+      profitColor: addedProfitYear >= 0 ? '#ec3013' : 'rgba(255,255,255,0.6)',
+      summary
+    };
+  }
+}
+</script>
+</body>
+</html>

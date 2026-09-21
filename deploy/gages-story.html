@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0c0c0d; }
+  body { font-family: Archivo, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #ec3013; text-decoration: none; }
+  a:hover { color: #ff4d2e; }
+  ::selection { background: #ec3013; color: #fff; }
+</style>
+</helmet>
+
+<div data-nav-root="" style="background:#0c0c0d;color:#f5f4f2;min-height:100vh;overflow-x:hidden">
+
+  <div style="position:sticky;top:0;z-index:50;background:rgba(12,12,13,0.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.08)">
+    <div style="max-width:1100px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="index.html" aria-label="GM Media" style="display:flex;align-items:center;flex:none"><img src="assets/gm-media-logo.webp" alt="GM Media" style="height:27px;width:auto;display:block" /></a>
+      <div style="display:flex;align-items:center;gap:26px;flex-wrap:nowrap">
+        <sc-if value="{{ wideNav }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;align-items:center;gap:26px">
+            <a href="gages-story.html" style="color:#f5f4f2;font-size:13.5px;font-weight:700;white-space:nowrap">Gage's Story</a>
+            <a href="client-breakdowns.html" style="color:#f5f4f2;font-size:13.5px;font-weight:700;white-space:nowrap">Breakdowns</a>
+            <a href="index.html#case-studies" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">Case Studies</a>
+            <a href="financial-model.html" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">Financial Model</a>
+            <a href="index.html#faq" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">FAQ</a>
+          </div>
+        </sc-if>
+        <a href="#book" style="background:#ec3013;color:#fff;font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:14px 22px;border-radius:999px;box-shadow:0 6px 20px rgba(236,48,19,0.28);white-space:nowrap" style-hover="background:#ff4d2e;color:#fff">Book a Call</a>
+        <sc-if value="{{ narrowNav }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="width:46px;height:46px;flex:none;border-radius:999px;border:1px solid rgba(255,255,255,0.22);background:transparent;color:#f5f4f2;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px" style-hover="background:rgba(255,255,255,0.06)">
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+          </button>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid rgba(255,255,255,0.08);padding:14px 24px 22px;display:flex;flex-direction:column;gap:2px">
+        <a href="gages-story.html" onClick="{{ closeMenu }}" style="color:#f5f4f2;font-size:16px;font-weight:700;padding:14px 0;min-height:44px;display:flex;align-items:center">Gage's Story</a>
+            <a href="client-breakdowns.html" onClick="{{ closeMenu }}" style="color:#f5f4f2;font-size:16px;font-weight:700;padding:14px 0;min-height:44px;display:flex;align-items:center">Breakdowns</a>
+        <a href="index.html#case-studies" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">Case Studies</a>
+        <a href="financial-model.html" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">Financial Model</a>
+        <a href="index.html#faq" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">FAQ</a>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.08);background:#0c0c0d">
+    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(110% 85% at 78% 105%, rgba(236,48,19,0.34) 0%, rgba(236,48,19,0.12) 34%, rgba(140,20,8,0.05) 58%, rgba(12,12,13,0) 76%)"></div>
+    <div style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 24px 72px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:56px;align-items:center">
+        <div style="min-width:0">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px">
+            <span style="width:26px;height:1px;background:#ec3013"></span>
+            <span style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;line-height:1.5">Founder &amp; CEO, GM Media</span>
+          </div>
+          <h1 style="margin:0;font-weight:900;font-size:clamp(34px,5vw,64px);line-height:1.02;letter-spacing:-0.03em">
+            <span style="display:block;color:#f5f4f2;text-shadow:0 0 24px rgba(255,255,255,0.2), 0 0 60px rgba(255,255,255,0.09)">I'm Gage Gifford.</span>
+            <span style="display:block;color:#ec3013;text-shadow:0 0 24px rgba(236,48,19,0.35), 0 0 60px rgba(236,48,19,0.18)">I don't see myself as a marketer.</span>
+          </h1>
+          <p style="margin:26px 0 0;font-size:18px;line-height:1.65;color:rgba(255,255,255,0.72);max-width:560px;text-wrap:pretty">I see myself as a builder. Content just happens to be the tool I mastered first.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:34px">
+            <a href="#book" style="display:flex;align-items:center;gap:12px;background:#ec3013;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:19px 32px;border-radius:999px;box-shadow:0 12px 34px rgba(236,48,19,0.34)" style-hover="background:#ff4d2e;color:#fff">Book a Call <span style="font-size:15px">&#8594;</span></a>
+            <a href="index.html#case-studies" style="border:1px solid rgba(255,255,255,0.22);color:#f5f4f2;font-size:13.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:19px 32px;border-radius:999px" style-hover="background:rgba(255,255,255,0.06);color:#f5f4f2">See the Work</a>
+          </div>
+        </div>
+        <div style="min-width:0;position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);aspect-ratio:4/5;background:#17171a">
+          <video data-gm-loop="" autoplay="" data-gm-start="0" src="assets/broll/gage.mp4" poster="assets/broll/poster-gage.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:58% 40%;display:block"></video>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,12,13,0) 55%,rgba(12,12,13,0.72) 100%)"></div>
+          <div style="position:absolute;left:26px;right:26px;bottom:24px;pointer-events:none">
+            <div style="font-size:15px;font-weight:800;letter-spacing:-0.01em;color:#f5f4f2">Gage Gifford</div>
+            <div style="font-size:12.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-top:5px">Founder &amp; CEO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:80px 24px 0">
+    <div style="max-width:760px">
+      <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:20px">Where it started</div>
+      <p style="margin:0 0 22px;font-size:19px;line-height:1.7;color:rgba(255,255,255,0.78);text-wrap:pretty">I didn't start GM Media because I was obsessed with marketing.</p>
+      <p style="margin:0 0 30px;font-size:19px;line-height:1.7;color:rgba(255,255,255,0.78);text-wrap:pretty">I started it because I became obsessed with understanding human behavior — what captures someone's attention, what builds trust, and ultimately what drives someone to buy a product or service.</p>
+      <p style="margin:0 0 30px;font-size:18px;line-height:1.75;color:rgba(255,255,255,0.72);text-wrap:pretty">The more I studied content, psychology, and consumer behavior, the more I realized that attention alone isn't enough.</p>
+      <div style="border:1px solid rgba(236,48,19,0.35);background:rgba(236,48,19,0.08);border-radius:20px;padding:34px 32px;margin-bottom:34px">
+        <p style="margin:0;font-size:clamp(22px,2.6vw,30px);font-weight:800;line-height:1.3;letter-spacing:-0.02em;color:#f5f4f2;text-wrap:pretty">Anyone can get views. The real challenge is turning attention into trust, and trust into action.</p>
+      </div>
+      <p style="margin:0;font-size:18px;line-height:1.75;color:rgba(255,255,255,0.72);text-wrap:pretty">That obsession led me to study not just what makes content perform, but why people connect with certain brands, remember certain stories, and choose one business over another.</p>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:72px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:44px;align-items:start">
+      <div style="min-width:0">
+        <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">The gap I found in dental</div>
+        <h2 style="margin:0 0 18px;font-weight:900;font-size:clamp(26px,3.4vw,40px);line-height:1.05;letter-spacing:-0.02em;text-wrap:balance">Most agencies expected doctors to film it themselves.</h2>
+        <p style="margin:0 0 20px;font-size:17px;line-height:1.7;color:rgba(255,255,255,0.72);text-wrap:pretty">They'd hand over a content calendar, ask the team to record videos on their phones, and hope for the best. It was convenient for the agency — but it wasn't creating exceptional content.</p>
+        <p style="margin:0 0 20px;font-size:17px;line-height:1.7;color:rgba(255,255,255,0.72);text-wrap:pretty">I believed there was a better way. Instead of asking busy doctors to become content creators, I built a creative team that travels directly to their practices, handles the entire production process, and creates content at a level the industry hadn't seen before.</p>
+        <p style="margin:0;font-size:17px;line-height:1.7;color:#f5f4f2;font-weight:600;text-wrap:pretty">The goal was simple: make social media a true growth asset without taking doctors away from what they do best — treating patients.</p>
+      </div>
+      <div style="min-width:0;position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);height:100%;min-height:300px;background:#17171a">
+        <video data-gm-loop="" autoplay="" data-gm-start="0" src="assets/broll/camera-in-hand.mp4" poster="assets/broll/poster-camera-in-hand.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.06) brightness(0.92)"></video>
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,13,0.1) 0%,rgba(12,12,13,0) 45%,rgba(12,12,13,0.82) 100%)"></div>
+        <div style="position:absolute;left:24px;right:24px;bottom:22px">
+          <div style="font-size:15px;font-weight:700;color:#f5f4f2;line-height:1.4">Our crew, in the practice, doing the work.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:72px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:48px">
+      <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">The formula</div>
+      <p style="margin:0 0 40px;font-size:17px;line-height:1.7;color:rgba(255,255,255,0.72);max-width:640px;text-wrap:pretty">Miss any one of the three and the content stalls. Most agencies only ever solve for the first.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:34px 28px;margin-bottom:16px">
+        <span style="font-size:clamp(24px,3.6vw,42px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#f5f4f2;text-shadow:0 0 24px rgba(255,255,255,0.18)">Attention</span>
+        <span style="font-size:clamp(20px,2.6vw,30px);font-weight:800;color:rgba(255,255,255,0.35);line-height:1">+</span>
+        <span style="font-size:clamp(24px,3.6vw,42px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#f5f4f2;text-shadow:0 0 24px rgba(255,255,255,0.18)">Trust</span>
+        <span style="font-size:clamp(20px,2.6vw,30px);font-weight:800;color:rgba(255,255,255,0.35);line-height:1">+</span>
+        <span style="font-size:clamp(24px,3.6vw,42px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#f5f4f2;text-shadow:0 0 24px rgba(255,255,255,0.18)">Drive</span>
+        <span style="font-size:clamp(20px,2.6vw,30px);font-weight:800;color:rgba(255,255,255,0.35);line-height:1">=</span>
+        <span style="font-size:clamp(24px,3.6vw,42px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#ec3013;text-shadow:0 0 24px rgba(236,48,19,0.4), 0 0 60px rgba(236,48,19,0.2)">Growth</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px">
+          <div style="font-size:19px;font-weight:900;letter-spacing:-0.01em;color:#ec3013;margin-bottom:12px">Attention</div>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:rgba(255,255,255,0.72)">The first part of the equation is capturing their attention. If they don't stop the scroll, nothing else matters.</p>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px">
+          <div style="font-size:19px;font-weight:900;letter-spacing:-0.01em;color:#ec3013;margin-bottom:12px">Trust</div>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:rgba(255,255,255,0.72)">Showing competence and empathy in your content, so the viewer knows you genuinely care about them.</p>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px">
+          <div style="font-size:19px;font-weight:900;letter-spacing:-0.01em;color:#ec3013;margin-bottom:12px">Drive</div>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:rgba(255,255,255,0.72)">Understanding what actually motivates a patient to book — and speaking to that, not to the algorithm.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:72px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:48px">
+      <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">Where it stands today</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px">
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:30px 26px">
+          <div style="font-size:clamp(32px,4.4vw,46px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#f5f4f2">Hundreds</div>
+          <div style="font-size:14.5px;color:rgba(255,255,255,0.55);margin-top:10px;line-height:1.5">of businesses with a stronger online presence</div>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:30px 26px">
+          <div style="font-size:clamp(32px,4.4vw,46px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#f5f4f2">Millions</div>
+          <div style="font-size:14.5px;color:rgba(255,255,255,0.55);margin-top:10px;line-height:1.5">of views generated for our clients</div>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:30px 26px">
+          <div style="font-size:clamp(32px,4.4vw,46px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#f5f4f2">Thousands</div>
+          <div style="font-size:14.5px;color:rgba(255,255,255,0.55);margin-top:10px;line-height:1.5">of pieces of content produced end to end</div>
+        </div>
+      </div>
+      <p style="margin:26px 0 0;font-size:17px;line-height:1.7;color:rgba(255,255,255,0.72);max-width:760px;text-wrap:pretty">Today GM Media combines high-end production with a deep understanding of human psychology to create content that doesn't just look great — it builds trust, strengthens brands, and turns attention into real business growth.</p>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:72px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:44px;align-items:start">
+      <div style="min-width:0">
+        <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">Beyond the agency</div>
+        <h2 style="margin:0 0 18px;font-weight:900;font-size:clamp(26px,3.4vw,40px);line-height:1.05;letter-spacing:-0.02em;text-wrap:balance">I'm fascinated by business itself.</h2>
+        <p style="margin:0 0 20px;font-size:17px;line-height:1.7;color:rgba(255,255,255,0.72);text-wrap:pretty">I spend my time studying leadership, sales, operations, branding, investing, systems, and human psychology — because every great company is built on great thinking.</p>
+        <p style="margin:0;font-size:17px;line-height:1.7;color:rgba(255,255,255,0.72);text-wrap:pretty">Long term I want to build multiple companies, invest in businesses, create educational products, speak to entrepreneurs, and help founders think bigger than they thought possible.</p>
+      </div>
+      <div style="min-width:0;background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:34px 32px">
+        <div style="width:34px;height:2px;background:#ec3013;margin-bottom:22px"></div>
+        <p style="margin:0 0 18px;font-size:clamp(19px,2.2vw,24px);font-weight:800;line-height:1.4;letter-spacing:-0.01em;color:#f5f4f2;text-wrap:pretty">The businesses that deserve the most attention should be the ones that earn it.</p>
+        <p style="margin:0;font-size:16px;line-height:1.65;color:rgba(255,255,255,0.65);text-wrap:pretty">My goal is to help make that happen — one story, one brand, and one business at a time.</p>
+        <div style="margin-top:26px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Gage Gifford</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="book" style="margin-top:80px;background:#ec3013;padding:80px 24px">
+    <div style="max-width:1100px;margin:0 auto;text-align:center">
+      <div style="color:rgba(255,255,255,0.75);font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:18px">Let's talk</div>
+      <h2 style="margin:0 auto 18px;font-weight:900;font-size:clamp(28px,4.6vw,50px);line-height:1.04;letter-spacing:-0.02em;color:#fff;max-width:800px;text-wrap:balance">Time to start building your brand.</h2>
+      <p style="margin:0 auto 34px;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.85);max-width:540px">30 minutes. We look at your practice and see if this system actually makes sense to implement. If it doesn't, we'll tell you.</p>
+      <a href="#calendar" style="display:inline-block;background:#0c0c0d;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:20px 40px;border-radius:999px;box-shadow:0 12px 34px rgba(0,0,0,0.3)" style-hover="background:#17171a;color:#fff">Book Your Call</a>
+      <div id="calendar" style="margin-top:40px">
+        <div style="background:#fff;border-radius:20px;overflow:hidden;max-width:900px;margin:0 auto;box-shadow:0 18px 50px rgba(0,0,0,0.28)">
+          <iframe src="https://calendly.com/d/cymv-7md-9sg/gm-media-discovery-call?hide_gdpr_banner=1&amp;text_color=000000&amp;primary_color=ff1700" title="Book a discovery call with GM Media" loading="lazy" style="width:100%;min-width:320px;height:700px;border:0;display:block"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.08)">
+    <div style="max-width:1100px;margin:0 auto;padding:44px 24px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center"><img src="assets/gm-media-logo.webp" alt="GM Media" style="height:30px;width:auto;display:block;opacity:0.85" /></div>
+      <div style="display:flex;flex-wrap:wrap;gap:22px">
+        <a href="gages-story.html" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Gage's Story</a>
+            <a href="client-breakdowns.html" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Breakdowns</a>
+        <a href="index.html#case-studies" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Case Studies</a>
+        <a href="financial-model.html" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Financial Model</a>
+        <a href="index.html#faq" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">FAQ</a>
+      </div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5)">© 2026 GM Media</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { wide: true, menuOpen: false };
+
+  componentDidMount() {
+    this.measure = () => {
+      const w = (this.rootEl && this.rootEl.clientWidth) || window.innerWidth;
+      const wide = w >= 900;
+      if (wide !== this.state.wide) this.setState({ wide, menuOpen: false });
+    };
+    this.rootEl = document.querySelector('[data-nav-root]') || document.body;
+    this.measure();
+    window.addEventListener('resize', this.measure);
+    if (window.ResizeObserver) {
+      this.ro = new ResizeObserver(this.measure);
+      this.ro.observe(this.rootEl);
+    }
+    this.startLoopClips();
+  }
+
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.measure);
+    if (this.ro) this.ro.disconnect();
+    if (this.loopIo) this.loopIo.disconnect();
+  }
+
+  componentDidUpdate() {
+    this.startLoopClips();
+  }
+
+  startLoopClips() {
+    const els = Array.prototype.slice.call(document.querySelectorAll('[data-gm-loop]'))
+      .filter(el => el.dataset.gmBound !== '1');
+    if (!els.length) return;
+    els.forEach(el => {
+      el.dataset.gmBound = '1';
+      const start = parseFloat(el.getAttribute('data-gm-start') || '0') || 0;
+      el.muted = true; el.loop = true; el.setAttribute('playsinline', '');
+      el.addEventListener('loadedmetadata', () => { if (el.currentTime < start) el.currentTime = start; });
+      el.addEventListener('timeupdate', () => {});
+      el.addEventListener('ended', () => {
+        try { el.currentTime = start; } catch (err) {}
+        const p = el.play();
+        if (p && p.catch) p.catch(() => {});
+      });
+    });
+    if (!window.IntersectionObserver) { els.forEach(el => { el.preload = 'auto'; el.play().catch(() => {}); }); return; }
+    if (this.loopIo) { els.forEach(el => this.loopIo.observe(el)); return; }
+    this.loopIo = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const el = e.target;
+        if (e.isIntersecting) {
+          const start = parseFloat(el.getAttribute('data-gm-start') || '0') || 0;
+          const go = () => {
+            if (el.currentTime < start) { try { el.currentTime = start; } catch (err) {} }
+            const p = el.play();
+            if (p && p.catch) p.catch(() => {});
+          };
+          if (el.preload !== 'auto') {
+            el.preload = 'auto';
+            el.addEventListener('loadeddata', go, { once: true });
+            el.load();
+          } else go();
+        } else el.pause();
+      });
+    }, { threshold: 0.15 });
+    els.forEach(el => this.loopIo.observe(el));
+  }
+
+  renderVals() {
+    return {
+      wideNav: this.state.wide,
+      narrowNav: !this.state.wide,
+      menuOpen: !this.state.wide && this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

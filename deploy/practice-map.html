@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GM Media — practice map</title>
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0c0c0d; }
+  body { font-family: Archivo, Helvetica, Arial, sans-serif; color: #f5f4f2; -webkit-font-smoothing: antialiased; overflow: hidden; }
+  #wrap { position: relative; width: 100%; height: 100vh; }
+  svg { display: block; width: 100%; height: 100%; }
+  .land { fill: #17171a; stroke: rgba(255,255,255,0.16); stroke-width: 0.8; }
+  .states { fill: none; stroke: rgba(255,255,255,0.09); stroke-width: 0.6; stroke-linejoin: round; }
+  .dot { fill: #ec3013; cursor: pointer; }
+  .dot.hq { fill: #f5f4f2; stroke: #ec3013; stroke-width: 2.4; }
+  .hqlabel { fill: #f5f4f2; font-size: 10.5px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; pointer-events: none; }
+  .hqline { stroke: rgba(255,255,255,0.4); stroke-width: 1; pointer-events: none; }
+  #scene { cursor: grab; }
+  #scene:active { cursor: grabbing; }
+  #zoomctl {
+    position: absolute; right: 2px; top: 2px; display: flex; flex-direction: column; gap: 6px; z-index: 6;
+  }
+  #zoomctl button {
+    width: 34px; height: 34px; border-radius: 9px; cursor: pointer;
+    background: rgba(12,12,13,0.72); border: 1px solid rgba(255,255,255,0.18);
+    color: #f5f4f2; font-family: inherit; font-size: 17px; font-weight: 800; line-height: 1;
+    display: flex; align-items: center; justify-content: center; backdrop-filter: blur(6px);
+    transition: background 140ms ease, border-color 140ms ease;
+  }
+  #zoomctl button:hover { background: #ec3013; border-color: #ec3013; }
+  #zoomctl button.reset { font-size: 10px; font-weight: 800; letter-spacing: 0.06em; }
+  .halo { fill: rgba(236,48,19,0.22); pointer-events: none; }
+  .pulse { fill: none; stroke: rgba(236,48,19,0.55); stroke-width: 1.2; pointer-events: none; }
+  #tip {
+    position: absolute; pointer-events: none; opacity: 0;
+    background: rgba(12,12,13,0.94); border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 10px; padding: 9px 13px; font-size: 13px; font-weight: 700;
+    white-space: nowrap; transform: translate(-50%, -140%); transition: opacity 120ms ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 5;
+  }
+  #tip span { display: block; font-weight: 600; font-size: 11.5px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+  #legend {
+    position: absolute; left: 0; bottom: 0; display: flex; flex-wrap: wrap; gap: 26px;
+    padding: 0 4px; font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45);
+  }
+  #legend b { color: #ec3013; font-size: 15px; letter-spacing: -0.01em; margin-right: 7px; }
+  @media (prefers-reduced-motion: reduce) { .pulse { display: none; } }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <svg id="map" role="img" aria-label="Map of United States showing GM Media client practice locations"></svg>
+  <div id="tip"></div>
+  <div id="zoomctl">
+    <button type="button" id="zin" aria-label="Zoom in">+</button>
+    <button type="button" id="zout" aria-label="Zoom out">&minus;</button>
+    <button type="button" id="zreset" class="reset" aria-label="Reset view">US</button>
+  </div>
+  <div id="legend"></div>
+</div>
+<script>
+const PRACTICES = [
+  { city: 'Blackfoot', state: 'ID', lat: 43.190, lon: -112.345, n: 1 },
+  { city: 'Idaho Falls', state: 'ID', lat: 43.492, lon: -112.034, n: 2 },
+  { city: 'Woods Cross', state: 'UT', lat: 40.872, lon: -111.902, n: 1 },
+  { city: 'South Jordan', state: 'UT', lat: 40.562, lon: -111.930, n: 1 },
+  { city: 'Draper', state: 'UT', lat: 40.525, lon: -111.864, n: 1, hq: true },
+  { city: 'Provo', state: 'UT', lat: 40.234, lon: -111.659, n: 1 },
+  { city: 'Cottleville', state: 'MO', lat: 38.746, lon: -90.657, n: 1 },
+  { city: 'Springfield', state: 'MO', lat: 37.209, lon: -93.292, n: 1 },
+  { city: 'Somerset', state: 'PA', lat: 40.008, lon: -79.078, n: 1 },
+  { city: 'Philadelphia', state: 'PA', lat: 39.953, lon: -75.165, n: 1 },
+  { city: 'Reading', state: 'PA', lat: 40.336, lon: -75.927, n: 1 },
+  { city: 'Ambler', state: 'PA', lat: 40.155, lon: -75.222, n: 1 },
+  { city: 'Stroudsburg', state: 'PA', lat: 40.987, lon: -75.195, n: 1 },
+  { city: 'San Francisco', state: 'CA', lat: 37.775, lon: -122.419, n: 1 },
+  { city: 'Los Angeles', state: 'CA', lat: 34.052, lon: -118.244, n: 1 },
+  { city: 'San Diego', state: 'CA', lat: 32.716, lon: -117.161, n: 1 },
+  { city: 'La Jolla', state: 'CA', lat: 32.843, lon: -117.274, n: 1 },
+  { city: 'Cooper City', state: 'FL', lat: 26.058, lon: -80.271, n: 1 },
+  { city: 'Tampa', state: 'FL', lat: 27.951, lon: -82.457, n: 1 },
+  { city: 'Delray Beach', state: 'FL', lat: 26.461, lon: -80.073, n: 1 },
+  { city: 'Fort Bend', state: 'TX', lat: 29.620, lon: -95.635, n: 1 },
+  { city: 'Spring', state: 'TX', lat: 30.080, lon: -95.417, n: 1 },
+  { city: 'Dallas', state: 'TX', lat: 32.777, lon: -96.797, n: 1 },
+  { city: 'Austin', state: 'TX', lat: 30.267, lon: -97.743, n: 1 },
+  { city: 'New York', state: 'NY', lat: 40.713, lon: -74.006, n: 1 },
+  { city: 'Bedford Hills', state: 'NY', lat: 41.236, lon: -73.694, n: 1 },
+  { city: 'Anchorage', state: 'AK', lat: 61.218, lon: -149.900, n: 1 },
+  { city: 'Richmond', state: 'VA', lat: 37.541, lon: -77.436, n: 1 },
+  { city: 'Denver', state: 'CO', lat: 39.739, lon: -104.990, n: 1 },
+  { city: 'Boulder', state: 'CO', lat: 40.015, lon: -105.271, n: 2 },
+  { city: 'Bellevue', state: 'WA', lat: 47.610, lon: -122.201, n: 1 },
+  { city: 'Boston', state: 'MA', lat: 42.360, lon: -71.058, n: 1 },
+  { city: 'Nashville', state: 'TN', lat: 36.163, lon: -86.781, n: 1 },
+  { city: 'Sarasota', state: 'FL', lat: 27.337, lon: -82.531, n: 1 },
+  { city: 'Miami', state: 'FL', lat: 25.762, lon: -80.192, n: 1 },
+  { city: 'Pinecrest', state: 'FL', lat: 25.667, lon: -80.308, n: 1 },
+  { city: 'Wilson', state: 'NC', lat: 35.721, lon: -77.916, n: 1 },
+  { city: 'Advance', state: 'NC', lat: 35.941, lon: -80.412, n: 1 },
+  { city: 'Longmont', state: 'CO', lat: 40.167, lon: -105.102, n: 1 },
+  { city: 'Tacoma', state: 'WA', lat: 47.253, lon: -122.444, n: 1 },
+  { city: 'Charleston', state: 'SC', lat: 32.777, lon: -79.931, n: 1 },
+  { city: 'Fort Worth', state: 'TX', lat: 32.755, lon: -97.331, n: 1 },
+  { city: 'Lodi', state: 'NJ', lat: 40.882, lon: -74.083, n: 1 },
+  { city: 'Olathe', state: 'KS', lat: 38.881, lon: -94.819, n: 1 }
+];
+
+const totalPractices = PRACTICES.reduce((s, p) => s + p.n, 0);
+const totalStates = new Set(PRACTICES.map(p => p.state)).size;
+document.getElementById('legend').innerHTML =
+  '<div><b>' + totalPractices + '</b>Practices</div>' +
+  '<div><b>' + totalStates + '</b>States</div>' +
+  '<div><b>100%</b>Dental</div>';
+
+const svg = d3.select('#map');
+const tip = document.getElementById('tip');
+let usa = null;
+let stateBorders = null;
+
+// state geometry (US Census via us-atlas); falls back to the country outline alone
+fetch('https://cdn.jsdelivr.net/npm/us-atlas@3.0.1/states-10m.json')
+  .then(r => { if (!r.ok) throw new Error('states'); return r.json(); })
+  .then(topo => {
+    usa = topojson.feature(topo, topo.objects.nation).features[0];
+    stateBorders = topojson.mesh(topo, topo.objects.states, (a, b) => a !== b);
+    draw();
+  })
+  .catch(() => fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json')
+    .then(r => r.json())
+    .then(topo => {
+      const countries = topojson.feature(topo, topo.objects.countries);
+      usa = countries.features.find(f => f.properties && f.properties.name === 'United States of America');
+      draw();
+    })
+    .catch(() => { document.getElementById('legend').insertAdjacentHTML('beforeend', '<div>Map data unavailable</div>'); }));
+
+function draw() {
+  if (!usa) return;
+  const wrap = document.getElementById('wrap');
+  const W = wrap.clientWidth || 1100;
+  const H = wrap.clientHeight || 520;
+  const padBottom = 46;
+  svg.attr('viewBox', '0 0 ' + W + ' ' + H).selectAll('*').remove();
+
+  const scene = svg.append('g').attr('id', 'scene');
+
+  const projection = d3.geoAlbersUsa().fitExtent([[10, 6], [W - 10, H - padBottom]], usa);
+  const path = d3.geoPath(projection);
+
+  scene.append('path').datum(usa).attr('class', 'land').attr('d', path);
+  if (stateBorders) scene.append('path').datum(stateBorders).attr('class', 'states').attr('d', path);
+
+  const g = scene.append('g');
+  let k = 1;
+  const pts = PRACTICES.map(p => {
+    const xy = projection([p.lon, p.lat]);
+    return xy ? Object.assign({}, p, { x: xy[0], y: xy[1] }) : null;
+  }).filter(Boolean);
+
+  const r = d => (d.n > 1 ? 6.4 : 4.6);
+
+  const halos = g.selectAll('circle.halo').data(pts).join('circle')
+    .attr('class', 'halo').attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => r(d) * 2.4);
+
+  const pulses = g.selectAll('circle.pulse').data(pts).join('circle')
+    .attr('class', 'pulse').attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => r(d));
+
+  const dots = g.selectAll('circle.dot').data(pts).join('circle')
+    .attr('class', d => d.hq ? 'dot hq' : 'dot').attr('cx', d => d.x).attr('cy', d => d.y).attr('r', r)
+    .on('mouseenter', function (e, d) {
+      d3.select(this).attr('r', r(d) * 1.45 / k);
+      tip.innerHTML = (d.hq ? 'GM Media HQ<span>' + d.city + ', ' + d.state + '</span>' : d.city + ', ' + d.state + (d.n > 1 ? '<span>' + d.n + ' practices</span>' : ''));
+      const pt = d3.pointer(e, wrap);
+      tip.style.left = pt[0] + 'px';
+      tip.style.top = (pt[1] - 6) + 'px';
+      tip.style.opacity = 1;
+    })
+    .on('mouseleave', function (e, d) {
+      d3.select(this).attr('r', r(d) / k);
+      tip.style.opacity = 0;
+    });
+
+  const hq = pts.find(p => p.hq);
+  let hqLine = null, hqText = null;
+  if (hq) {
+    const lx = hq.x - 22, ly = hq.y + 30;
+    hqLine = g.append('line').attr('class', 'hqline')
+      .attr('x1', hq.x).attr('y1', hq.y).attr('x2', lx).attr('y2', ly);
+    hqText = g.append('text').attr('class', 'hqlabel')
+      .attr('x', lx - 4).attr('y', ly + 4).attr('text-anchor', 'end')
+      .text('GM Media HQ');
+  }
+
+  if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let t0 = null;
+    const tick = ts => {
+      if (t0 === null) t0 = ts;
+      const phase = ((ts - t0) % 2600) / 2600;
+      pulses
+        .attr('r', d => (r(d) + phase * r(d) * 3.4) / k)
+        .attr('opacity', 1 - phase);
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  // zoom: buttons and drag-pan only — wheel stays with the page
+  const zoom = d3.zoom()
+    .scaleExtent([1, 7])
+    .translateExtent([[0, 0], [W, H]])
+    .filter(e => e.type !== 'wheel' && e.type !== 'dblclick')
+    .on('zoom', e => {
+      k = e.transform.k;
+      scene.attr('transform', e.transform);
+      scene.select('.land').attr('stroke-width', 0.8 / k);
+      scene.select('.states').attr('stroke-width', 0.6 / k);
+      halos.attr('r', d => r(d) * 2.4 / k);
+      dots.attr('r', d => r(d) / k).attr('stroke-width', 2.4 / k);
+      if (hqText) {
+        hqText.attr('font-size', (10.5 / k) + 'px')
+          .attr('x', hq.x - 26 / k).attr('y', hq.y + 34 / k);
+        hqLine.attr('x2', hq.x - 22 / k).attr('y2', hq.y + 30 / k).attr('stroke-width', 1 / k);
+      }
+      tip.style.opacity = 0;
+    });
+
+  svg.call(zoom);
+  const step = f => () => svg.transition().duration(320).call(zoom.scaleBy, f);
+  document.getElementById('zin').onclick = step(1.7);
+  document.getElementById('zout').onclick = step(1 / 1.7);
+  document.getElementById('zreset').onclick = () =>
+    svg.transition().duration(380).call(zoom.transform, d3.zoomIdentity);
+}
+
+let rt;
+window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(draw, 160); });
+</script>
+</body>
+</html>

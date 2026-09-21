@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280"><rect width="400" height="280" fill="#0c0c0d"/><circle cx="200" cy="140" r="60" fill="#ec3013"/><text x="200" y="150" font-family="Arial" font-size="34" font-weight="900" fill="#fff" text-anchor="middle">GM</text></svg></template>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0c0c0d; }
+  body { font-family: Archivo, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #ec3013; text-decoration: none; }
+  a:hover { color: #ff4d2e; }
+  ::selection { background: #ec3013; color: #fff; }
+  @keyframes gm-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (max-width: 720px) {
+    .gm-marquee-track { animation-duration: 24s !important; }
+    .gm-hero-stat { margin-left: 0 !important; padding: 30px 26px !important; }
+    .gm-hero-cta { margin-top: 40px !important; }
+    .gm-hero-cta a { flex: 1 1 100%; justify-content: center; text-align: center; }
+    .gm-thumb-grid { grid-template-columns: repeat(4, 1fr) !important; }
+    .gm-foot-link { min-height: 44px; display: flex; align-items: center; }
+    .gm-hero-inner { min-height: calc(100svh - 200px) !important; padding-top: 40px !important; }
+  }
+  [data-rv] { opacity: 0; transform: translateY(16px); transition: opacity 640ms cubic-bezier(0.22,1,0.36,1), transform 640ms cubic-bezier(0.22,1,0.36,1); }
+  [data-rv="in"] { opacity: 1; transform: none; }
+  [data-rv-d="1"] { transition-delay: 70ms; }
+  [data-rv-d="2"] { transition-delay: 140ms; }
+  [data-rv-d="3"] { transition-delay: 210ms; }
+  [data-rv-d="4"] { transition-delay: 280ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .gm-marquee-track { animation: none !important; }
+    [data-rv] { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</helmet>
+
+<div data-nav-root="" style="background:#0c0c0d;color:#f5f4f2;min-height:100vh;overflow-x:hidden">
+
+  <div style="position:sticky;top:0;z-index:50;background:rgba(12,12,13,0.86);backdrop-filter:blur(14px);borderBottom:1px solid rgba(255,255,255,0.08)">
+    <div style="max-width:1100px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="#top" aria-label="GM Media" style="display:flex;align-items:center;flex:none"><img src="assets/gm-media-logo.webp" alt="GM Media" style="height:27px;width:auto;display:block" /></a>
+      <div style="display:flex;align-items:center;gap:26px;flex-wrap:nowrap">
+        <sc-if value="{{ wideNav }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;align-items:center;gap:26px">
+            <a href="gages-story.html" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">Gage's Story</a>
+            <a href="client-breakdowns.html" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">Breakdowns</a>
+            <a href="#case-studies" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">Case Studies</a>
+            <a href="financial-model.html" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">Financial Model</a>
+            <a href="#faq" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">FAQ</a>
+          </div>
+        </sc-if>
+        <a href="#book" style="background:#ec3013;color:#fff;font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:14px 22px;border-radius:999px;box-shadow:0 6px 20px rgba(236,48,19,0.28);white-space:nowrap" style-hover="background:#ff4d2e;color:#fff">Book a Call</a>
+        <sc-if value="{{ narrowNav }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="width:46px;height:46px;flex:none;border-radius:999px;border:1px solid rgba(255,255,255,0.22);background:transparent;color:#f5f4f2;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px" style-hover="background:rgba(255,255,255,0.06)">
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+          </button>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid rgba(255,255,255,0.08);padding:14px 24px 22px;display:flex;flex-direction:column;gap:2px">
+        <a href="gages-story.html" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">Gage's Story</a>
+            <a href="client-breakdowns.html" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">Breakdowns</a>
+        <a href="#case-studies" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">Case Studies</a>
+        <a href="financial-model.html" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">Financial Model</a>
+        <a href="#faq" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">FAQ</a>
+      </div>
+    </sc-if>
+  </div>
+
+  <div id="top" style="position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.08);background:#0c0c0d">
+    <video data-gm-loop="" autoplay="" data-gm-start="0" src="assets/broll/hero.mp4" poster="assets/broll/poster-hero.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;opacity:0.58;filter:grayscale(1) contrast(1.1) brightness(0.95)"></video>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,12,13,0.35) 0%,rgba(12,12,13,0.5) 55%,rgba(12,12,13,0.65) 100%)"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 62% 108%, rgba(236,48,19,0.42) 0%, rgba(236,48,19,0.16) 32%, rgba(140,20,8,0.06) 55%, rgba(12,12,13,0) 75%)"></div>
+    <canvas id="gm-rays" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;display:block"></canvas>
+    <div class="gm-hero-inner" style="position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:56px 24px 48px;min-height:calc(100svh - 240px);display:flex;flex-direction:column;justify-content:center">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr));gap:72px;align-items:end">
+        <div style="min-width:0">
+          <h1 style="margin:0;font-weight:900;font-size:clamp(28px,3.9vw,50px);line-height:1.14;letter-spacing:-0.03em"><span style="display:block;color:#f5f4f2;text-shadow:0 0 24px rgba(255,255,255,0.22), 0 0 60px rgba(255,255,255,0.1)">Build <span style="color:#ec3013;text-shadow:0 0 24px rgba(236,48,19,0.35), 0 0 60px rgba(236,48,19,0.18)">ATTENTION.</span></span><span style="display:block;color:#f5f4f2;text-shadow:0 0 24px rgba(255,255,255,0.22), 0 0 60px rgba(255,255,255,0.1)">Earn <span style="color:#ec3013;text-shadow:0 0 24px rgba(236,48,19,0.35), 0 0 60px rgba(236,48,19,0.18)">TRUST.</span></span></h1>
+          <p style="margin:34px 0 0;font-size:18px;line-height:1.7;color:rgba(255,255,255,0.7);max-width:560px;text-wrap:pretty">We handle <strong style="color:#f5f4f2;font-weight:700">ALL</strong> of your content, while you stay in the chair.</p>
+          <div class="gm-hero-cta" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:64px">
+            <a href="#book" style="display:flex;align-items:center;gap:12px;background:#ec3013;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:19px 32px;border-radius:999px;box-shadow:0 12px 34px rgba(236,48,19,0.34)" style-hover="background:#ff4d2e;color:#fff">Book a Call <span style="font-size:15px">&#8594;</span></a>
+            <a href="financial-model.html" style="border:1px solid rgba(255,255,255,0.22);color:#f5f4f2;font-size:13.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:19px 32px;border-radius:999px" style-hover="background:rgba(255,255,255,0.06);color:#f5f4f2">Run Your Own Numbers</a>
+          </div>
+        </div>
+        <div class="gm-hero-stat" style="background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.14);border-radius:20px;padding:46px 40px;backdrop-filter:blur(6px);margin-left:28px;margin-bottom:2px">
+          <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:20px">Increase in revenue</div>
+          <div style="font-size:clamp(54px,7vw,84px);font-weight:900;letter-spacing:-0.04em;line-height:1;color:#f5f4f2">400%</div>
+          <p style="margin:22px 0 0;font-size:16px;line-height:1.7;color:rgba(255,255,255,0.7)">Dr. Jordan Davis — booked out a full year on cosmetic cases, and tripled his prices.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,0.08);background:linear-gradient(180deg, rgba(236,48,19,0.16) 0%, rgba(236,48,19,0.07) 45%, rgba(12,12,13,0) 100%)">
+    <div style="max-width:1100px;margin:0 auto;padding:44px 24px 8px;display:flex;justify-content:center">
+      <span style="color:rgba(255,255,255,0.6);font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em">Practices we produce for</span>
+    </div>
+    <div style="position:relative;padding:16px 0 52px;mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%)">
+      <div class="gm-marquee-track" style="display:flex;width:max-content;animation:gm-marquee 46s linear infinite">
+        <div style="display:flex;align-items:center;gap:78px;padding-right:78px">
+          <img src="assets/logos/1631311463288-v2.png" alt="Sarah Winter Dental" style="height:46px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/cova-dental-logo.png" alt="Cova Dental" style="height:44px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/kelly-dental-logo-rgb-black-horizontal.png" alt="Kelly Dental" style="height:44px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/spodak-logo-512x512.png" alt="Spodak Dental Group" style="height:50px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/logo.png" alt="Fort Bend Dental" style="height:46px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/woodside-dental-v2.png" alt="Woodside Dental Group" style="height:46px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/images.png" alt="Luca Aesthetic" style="height:44px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/channels4-profile-v2.png" alt="Race Track Smiles" style="height:48px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/logo-copy.png" alt="Landmark Dental Studio" style="height:58px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/intermountain-health-logo.png" alt="Intermountain Health" style="height:44px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/bulletproof-dental.png" alt="Bulletproof Dental Practice" style="height:42px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/envision-dental-spa-white.png" alt="Envision Dental Spa" style="height:54px;width:auto;opacity:0.8;display:block" />
+        </div>
+        <div aria-hidden="true" style="display:flex;align-items:center;gap:78px;padding-right:78px">
+          <img src="assets/logos/1631311463288-v2.png" alt="" style="height:46px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/cova-dental-logo.png" alt="" style="height:44px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/kelly-dental-logo-rgb-black-horizontal.png" alt="" style="height:44px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/spodak-logo-512x512.png" alt="" style="height:50px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/logo.png" alt="" style="height:46px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/woodside-dental-v2.png" alt="" style="height:46px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/images.png" alt="" style="height:44px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/channels4-profile-v2.png" alt="" style="height:48px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/logo-copy.png" alt="" style="height:58px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/intermountain-health-logo.png" alt="" style="height:44px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/bulletproof-dental.png" alt="" style="height:42px;width:auto;opacity:0.8;display:block" />
+          <img src="assets/logos/envision-dental-spa-white.png" alt="" style="height:54px;width:auto;opacity:0.8;display:block" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:56px 24px 0">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.08);border-radius:20px;overflow:hidden">
+      <div style="background:#17171a;padding:26px 24px">
+        <div style="font-size:34px;font-weight:900;letter-spacing:-0.02em;color:#f5f4f2">6,600%</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:6px;line-height:1.4">view increase in month one</div>
+      </div>
+      <div style="background:#17171a;padding:26px 24px">
+        <div style="font-size:34px;font-weight:900;letter-spacing:-0.02em;color:#f5f4f2">12</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:6px;line-height:1.4">posts a month, four platforms</div>
+      </div>
+      <div style="background:#17171a;padding:26px 24px">
+        <div style="font-size:34px;font-weight:900;letter-spacing:-0.02em;color:#f5f4f2">0</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:6px;line-height:1.4">hours of editing on your end</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:88px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:44px;align-items:start">
+      <div>
+        <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">The real problem</div>
+        <h2 style="margin:0;font-weight:900;font-size:clamp(24px,3.4vw,38px);line-height:1.05;letter-spacing:-0.02em;text-wrap:balance">Most dentists don't know how to create content that actually connects.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;font-size:17px;line-height:1.65;color:rgba(255,255,255,0.7);text-wrap:pretty">It isn't a lack of effort. You post the office tour, the new equipment, the before-and-after — and it lands with the people who already know you. Nobody new stops scrolling, because nothing in it was made for them.</p>
+        <p style="margin:0;font-size:17px;line-height:1.65;color:rgba(255,255,255,0.7);text-wrap:pretty">Connecting is a different skill than dentistry. It takes knowing what makes a stranger stop, what makes them trust a doctor they've never met, and what actually moves them to book. That's a craft — and it's not the one you spent a decade mastering.</p>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:22px 24px">
+          <div style="font-size:16px;font-weight:700;line-height:1.5;color:#f5f4f2">So the average practice that knows how to connect beats the great practice that doesn't.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:88px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:44px">
+      <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">Solution</div>
+      <h2 style="margin:0 0 12px;font-weight:900;font-size:clamp(24px,3.4vw,38px);line-height:1.05;letter-spacing:-0.02em;text-wrap:balance">We become your in-house content creatives to build your brand.</h2>
+      <p style="margin:0 0 40px;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.7);max-width:620px">Five steps. Four of them happen without you.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <div style="width:34px;height:34px;border-radius:999px;background:#ec3013;color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;margin-bottom:18px">1</div>
+          <h3 style="margin:0 0 10px;font-size:19px;font-weight:800;letter-spacing:-0.01em">Viral content plan</h3>
+          <p style="margin:0 0 18px;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">We study your market, your cases, and what already performs in dentistry, then map every video to a job: trust, authority, familiarity, or demand.</p>
+          <video data-gm-loop="" autoplay="" data-gm-start="0" src="assets/broll/content-plan.mp4" poster="assets/broll/poster-content-plan.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="width:100%;height:168px;object-fit:cover;object-position:52% 45%;border-radius:14px;border:1px solid rgba(255,255,255,0.08);display:block;filter:brightness(1.12) contrast(1.08)"></video>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <div style="width:34px;height:34px;border-radius:999px;background:#ec3013;color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;margin-bottom:18px">2</div>
+          <video data-gm-loop="" autoplay="" data-gm-start="0" src="assets/broll/camera-in-hand.mp4" poster="assets/broll/poster-camera-in-hand.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="width:100%;height:168px;object-fit:cover;object-position:50% 42%;border-radius:14px;border:1px solid rgba(255,255,255,0.08);display:block;margin-bottom:18px;filter:brightness(1.16) contrast(1.12) saturate(1.06)"></video>
+          <h3 style="margin:0 0 10px;font-size:19px;font-weight:800;letter-spacing:-0.01em">We fly in and film</h3>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">Our crew shoots on site at your practice. You do not buy gear, learn lighting, or write scripts. You be great in the chair, we handle the rest.</p>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <div style="width:34px;height:34px;border-radius:999px;background:#ec3013;color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;margin-bottom:18px">3</div>
+          <h3 style="margin:0 0 10px;font-size:19px;font-weight:800;letter-spacing:-0.01em">12 posts a month, published</h3>
+          <p style="margin:0 0 18px;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">Edited, captioned, scheduled and posted to Instagram, TikTok, YouTube and Facebook. Nothing sits in a folder waiting on your approval sprint.</p>
+          <video data-gm-loop="" autoplay="" data-gm-start="0" src="assets/broll/publishing.mp4" poster="assets/broll/poster-publishing.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="width:100%;height:168px;object-fit:cover;object-position:50% 45%;border-radius:14px;border:1px solid rgba(255,255,255,0.08);display:block;filter:brightness(1.14) contrast(1.06)"></video>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;display:flex;flex-direction:column">
+          <div style="width:34px;height:34px;border-radius:999px;background:#ec3013;color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;flex:none">4</div>
+          <h3 style="margin:0 0 10px;font-size:19px;font-weight:800;letter-spacing:-0.01em">DM automation books the chair</h3>
+          <p style="margin:0 0 20px;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">Views are not the product. Every comment and message routes into an automation that answers, qualifies, and books the appointment.</p>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08)">
+            <span style="font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Powered by</span>
+            <img src="assets/logos/manychat-white.png" alt="ManyChat" style="height:19px;width:auto;opacity:0.85;display:block" />
+          </div>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <div style="width:34px;height:34px;border-radius:999px;background:#ec3013;color:#fff;font-weight:900;font-size:15px;display:flex;align-items:center;justify-content:center;margin-bottom:18px">5</div>
+          <h3 style="margin:0 0 10px;font-size:19px;font-weight:800;letter-spacing:-0.01em">Your team gets coached</h3>
+          <p style="margin:0 0 18px;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">While we are on site we train your staff to capture content themselves, so the feed keeps moving between shoot days.</p>
+          <video data-gm-loop="" autoplay="" data-gm-start="0" src="assets/broll/team-coaching.mp4" poster="assets/broll/poster-team-coaching.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="width:100%;height:168px;object-fit:cover;object-position:50% 45%;border-radius:14px;border:1px solid rgba(255,255,255,0.08);display:block;filter:brightness(1.06) contrast(1.04)"></video>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;gap:20px">
+          <div>
+            <h3 style="margin:0 0 10px;font-size:19px;font-weight:800;letter-spacing:-0.01em">Then it compounds.</h3>
+            <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">Twelve months of consistent publishing is what separates the practice people recognize from the one they scroll past.</p>
+          </div>
+          <div data-om-raster="" style="border:1px solid rgba(255,255,255,0.08);border-radius:14px;background:#0f0f11;padding:16px 16px 12px">
+            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:10px">
+              <span style="font-size:10.5px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Monthly view growth</span>
+              <span style="font-size:15px;font-weight:900;color:#ec3013;letter-spacing:-0.01em">6,000%</span>
+            </div>
+            <svg viewBox="0 0 300 96" preserveAspectRatio="none" style="width:100%;height:96px;display:block;overflow:visible">
+              <line x1="0" y1="88" x2="300" y2="88" stroke="rgba(255,255,255,0.12)" stroke-width="1"></line>
+              <path d="M6,87.9 L32.2,87.8 L58.4,87.5 L84.5,86.8 L110.7,85.8 L136.9,84.2 L163.1,80.9 L189.3,75.8 L215.5,66.8 L241.6,52.7 L267.8,33.7 L294,12 L294,88 L6,88 Z" fill="rgba(236,48,19,0.16)"></path>
+              <path d="M6,87.9 L32.2,87.8 L58.4,87.5 L84.5,86.8 L110.7,85.8 L136.9,84.2 L163.1,80.9 L189.3,75.8 L215.5,66.8 L241.6,52.7 L267.8,33.7 L294,12" fill="none" stroke="#ec3013" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="294" cy="12" r="4" fill="#ec3013"></circle>
+            </svg>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
+              <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.4)">Month 1</span>
+              <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.4)">Month 12</span>
+            </div>
+          </div>
+          <a href="#book" style="align-self:flex-start;background:#ec3013;color:#fff;font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:15px 26px;border-radius:999px" style-hover="background:#ff4d2e;color:#fff">Book a Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="behind" style="max-width:1100px;margin:0 auto;padding:88px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:44px">
+      <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">Behind the scenes</div>
+      <h2 style="margin:0 0 40px;font-weight:900;font-size:clamp(24px,3.4vw,38px);line-height:1.05;letter-spacing:-0.02em">This is a film day at your practice.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:center">
+        <div style="position:relative;width:100%;max-width:520px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);background:#17171a;box-shadow:0 30px 80px rgba(0,0,0,0.45)">
+          <video id="gm-clip-0" src="assets/broll/film-day.mp4" poster="assets/broll/poster-film-day.jpg" muted="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity 700ms ease"></video>
+          <video id="gm-clip-1" src="assets/broll/interview-consult.mp4" poster="assets/broll/poster-interview-consult.jpg" muted="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 700ms ease"></video>
+          <video id="gm-clip-2" src="assets/broll/clinical-loupes.mp4" poster="assets/broll/poster-clinical-loupes.jpg" muted="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 700ms ease;filter:brightness(1.16) contrast(1.12) saturate(1.06)"></video>
+          <video id="gm-clip-3" src="assets/broll/live-case.mp4" poster="assets/broll/poster-live-case.jpg" muted="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 700ms ease;filter:brightness(1.16) contrast(1.12) saturate(1.06)"></video>
+          <video id="gm-clip-4" src="assets/broll/interview-lobby.mp4" poster="assets/broll/poster-interview-lobby.jpg" muted="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 700ms ease"></video>
+          <video id="gm-clip-5" src="assets/broll/practice-walkthrough.mp4" poster="assets/broll/poster-practice-walkthrough.jpg" muted="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 700ms ease"></video>
+          <video id="gm-clip-6" src="assets/broll/new-c-trim.mp4" poster="assets/broll/poster-new-c-trim.jpg" muted="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 700ms ease;filter:brightness(1.06) contrast(1.06)"></video>
+          <video id="gm-clip-7" src="assets/broll/new-a-trim.mp4" poster="assets/broll/poster-new-a-trim.jpg" muted="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 700ms ease"></video>
+          <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,12,13,0.35) 0%,rgba(12,12,13,0) 28%,rgba(12,12,13,0) 62%,rgba(12,12,13,0.72) 100%)"></div>
+          <div style="position:absolute;left:18px;top:18px;display:flex;align-items:center;gap:8px;background:rgba(12,12,13,0.55);border:1px solid rgba(255,255,255,0.16);border-radius:999px;padding:8px 14px;backdrop-filter:blur(6px)">
+            <span style="width:7px;height:7px;border-radius:999px;background:#ec3013;display:block"></span>
+            <span style="font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:#f5f4f2">Our crew, on site</span>
+          </div>
+          <div id="gm-clip-caption" style="position:absolute;left:20px;right:20px;bottom:26px;font-size:15px;font-weight:700;color:#f5f4f2">Directing the doctor in the operatory</div>
+          <div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,0.12)">
+            <div id="gm-clip-progress" style="height:100%;width:0%;background:#ec3013"></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:26px">
+          <p style="margin:0;font-size:17px;line-height:1.65;color:rgba(255,255,255,0.7);text-wrap:pretty">Our crew shows up with the cameras, lights and audio, sets up in your operatory and consult room, directs every shot, and leaves with a month of content. You are on camera for part of the day. That is the extent of your involvement.</p>
+          <div class="gm-thumb-grid" style="display:grid;grid-template-columns:repeat(8,1fr);gap:8px">
+            <button id="gm-thumb-0" type="button" onClick="{{ pick0 }}" aria-label="Play: Directing the doctor in the operatory" style="padding:0;border:1px solid rgba(236,48,19,0.9);background:#17171a;border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:9/14"><img src="assets/broll/poster-film-day.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.95" /></button>
+            <button id="gm-thumb-1" type="button" onClick="{{ pick1 }}" aria-label="Play: Running an interview in the consult room" style="padding:0;border:1px solid rgba(255,255,255,0.14);background:#17171a;border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:9/14"><img src="assets/broll/poster-interview-consult.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.5" /></button>
+            <button id="gm-thumb-2" type="button" onClick="{{ pick2 }}" aria-label="Play: Close-ups of the doctor at work" style="padding:0;border:1px solid rgba(255,255,255,0.14);background:#17171a;border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:9/14"><img src="assets/broll/poster-clinical-loupes.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.5" /></button>
+            <button id="gm-thumb-3" type="button" onClick="{{ pick3 }}" aria-label="Play: Documenting a live case, chairside" style="padding:0;border:1px solid rgba(255,255,255,0.14);background:#17171a;border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:9/14"><img src="assets/broll/poster-live-case.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.5" /></button>
+            <button id="gm-thumb-4" type="button" onClick="{{ pick4 }}" aria-label="Play: Doctor interview in natural light" style="padding:0;border:1px solid rgba(255,255,255,0.14);background:#17171a;border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:9/14"><img src="assets/broll/poster-interview-lobby.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.5" /></button>
+            <button id="gm-thumb-5" type="button" onClick="{{ pick5 }}" aria-label="Play: Walking the practice on camera" style="padding:0;border:1px solid rgba(255,255,255,0.14);background:#17171a;border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:9/14"><img src="assets/broll/poster-practice-walkthrough.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.5" /></button>
+            <button id="gm-thumb-6" type="button" onClick="{{ pick6 }}" aria-label="Play: Lights and camera set for the interview" style="padding:0;border:1px solid rgba(255,255,255,0.14);background:#17171a;border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:9/14"><img src="assets/broll/poster-new-c-trim.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.5" /></button>
+            <button id="gm-thumb-7" type="button" onClick="{{ pick7 }}" aria-label="Play: Coaching the delivery, take after take" style="padding:0;border:1px solid rgba(255,255,255,0.14);background:#17171a;border-radius:12px;overflow:hidden;cursor:pointer;aspect-ratio:9/14"><img src="assets/broll/poster-new-a-trim.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.5" /></button>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:10px 16px">Operatory shoots</span>
+            <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:10px 16px">Patient interviews</span>
+            <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:10px 16px">Team coaching</span>
+            <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:10px 16px">Case documentation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="results" style="max-width:1100px;margin:0 auto;padding:88px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:44px">
+      <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">Results</div>
+      <h2 style="margin:0 0 40px;font-weight:900;font-size:clamp(24px,3.4vw,38px);line-height:1.05;letter-spacing:-0.02em">This isn't theory. It's working.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px">
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <div style="display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#ec3013;border:1px solid rgba(236,48,19,0.35);border-radius:999px;padding:7px 14px;margin-bottom:20px">Booked 1 year out</div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+            <img src="assets/clients/jordan-davis-sm.jpg" alt="Dr. Jordan Davis" style="width:56px;height:56px;border-radius:999px;object-fit:cover;object-position:50% 22%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="font-size:19px;font-weight:900;letter-spacing:-0.01em">Dr. Jordan Davis</div>
+            </div>
+          </div>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">Booked out a full year on cosmetic cases — and tripled his prices.</p>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <div style="display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#ec3013;border:1px solid rgba(236,48,19,0.35);border-radius:999px;padding:7px 14px;margin-bottom:20px">15M+ views</div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+            <img src="assets/clients/paradis-esi-sm.jpg" alt="Dr. Paradis Esi" style="width:56px;height:56px;border-radius:999px;object-fit:cover;object-position:50% 30%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="font-size:19px;font-weight:900;letter-spacing:-0.01em">Dr. Paradis Esi</div>
+            </div>
+          </div>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">More than 15 million views in just his second month working with us — along with a measurable increase in patient acceptance rates.</p>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <div style="display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#ec3013;border:1px solid rgba(236,48,19,0.35);border-radius:999px;padding:7px 14px;margin-bottom:20px">3x revenue</div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+            <img src="assets/clients/mark-azer-sm.jpg" alt="Dr. Mark Azer" style="width:56px;height:56px;border-radius:999px;object-fit:cover;object-position:50% 22%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="font-size:19px;font-weight:900;letter-spacing:-0.01em">Dr. Mark Azer</div>
+            </div>
+          </div>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">Had to hire new staff to handle new patient flow — and became the top local dentist.</p>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <div style="display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#ec3013;border:1px solid rgba(236,48,19,0.35);border-radius:999px;padding:7px 14px;margin-bottom:20px">Top seller</div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+            <img src="assets/clients/sarah-winter-sm.jpg" alt="Dr. Sarah Winter" style="width:56px;height:56px;border-radius:999px;object-fit:cover;object-position:50% 25%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="font-size:19px;font-weight:900;letter-spacing:-0.01em">Dr. Sarah Winter</div>
+            </div>
+          </div>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">Became the top-selling cosmetic case provider in her entire DSO.</p>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <div style="display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#ec3013;border:1px solid rgba(236,48,19,0.35);border-radius:999px;padding:7px 14px;margin-bottom:20px">23K+ followers</div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+            <img src="assets/clients/craig-spodak-sm.jpg" alt="Dr. Craig Spodak" style="width:56px;height:56px;border-radius:999px;object-fit:cover;object-position:50% 25%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="font-size:19px;font-weight:900;letter-spacing:-0.01em">Dr. Craig Spodak</div>
+              <div style="font-size:13.5px;color:rgba(255,255,255,0.5);margin-top:2px">Spodak Dental</div>
+            </div>
+          </div>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">Grew to over 23K Instagram followers, building trust across every doctor in the practice.</p>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <div style="display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#ec3013;border:1px solid rgba(236,48,19,0.35);border-radius:999px;padding:7px 14px;margin-bottom:20px">6,600%</div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
+            <img src="assets/clients/jen.webp" alt="Jen" style="width:56px;height:56px;border-radius:999px;object-fit:cover;object-position:50% 30%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="font-size:19px;font-weight:900;letter-spacing:-0.01em">Dr. Jen Friedman</div>
+            </div>
+          </div>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">A 6,600% increase in views in her very first month.</p>
+        </div>
+      </div>
+      <div style="margin-top:16px;background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
+        <p style="margin:0;font-size:16px;line-height:1.6;color:rgba(255,255,255,0.7);max-width:600px">Every number here came from a practice that had no content system twelve months earlier.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="industry" style="margin-top:88px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);background:#0c0c0d">
+    <div style="position:relative;height:clamp(420px,50vw,560px);overflow:hidden;background:#0c0c0d">
+      <video data-gm-loop="" autoplay="" data-gm-start="0" src="assets/broll/conference-stage-wide.mp4" poster="assets/broll/poster-conference-stage-wide.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 14%;display:block;filter:brightness(1.05) contrast(1.06)"></video>
+      <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,12,13,0.55) 0%,rgba(12,12,13,0.35) 38%,rgba(12,12,13,0.92) 100%)"></div>
+      <div style="position:absolute;left:0;right:0;bottom:0;padding:0 24px 44px">
+        <div style="max-width:1100px;margin:0 auto">
+          <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">Industry leader</div>
+          <h2 style="margin:0 0 14px;font-weight:900;font-size:clamp(28px,4.2vw,48px);line-height:1.02;letter-spacing:-0.02em;color:#f5f4f2;max-width:760px;text-wrap:balance">Top of the dental industry.</h2>
+          <p style="margin:0;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.75);max-width:600px;text-wrap:pretty">Practices watch what we make. Dental conferences ask us to present it.</p>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1100px;margin:0 auto;padding:56px 24px 72px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:36px;align-items:center">
+        <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);background:#17171a;box-shadow:0 24px 60px rgba(0,0,0,0.4)">
+          <video data-gm-loop="" autoplay="" data-gm-start="0" src="assets/broll/conference-booth.mp4" poster="assets/broll/poster-conference-booth.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="width:100%;aspect-ratio:16/9;object-fit:cover;object-position:50% 45%;display:block;filter:brightness(1.08) contrast(1.05)"></video>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:22px">
+          <h3 style="margin:0;font-size:clamp(20px,2.4vw,26px);font-weight:900;letter-spacing:-0.02em;line-height:1.15">The standing is why we get the invitation.</h3>
+          <p style="margin:0;font-size:16.5px;line-height:1.65;color:rgba(255,255,255,0.7);text-wrap:pretty">Speaking slots and event sponsorships follow the work: the practices we build, the results doctors repeat to each other, and a name that stays inside dentistry.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:10px 16px">Invited to speak</span>
+            <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:10px 16px">Event sponsor</span>
+            <span style="font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:10px 16px">Dental only</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="case-studies" style="max-width:1100px;margin:0 auto;padding:88px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:44px">
+      <div style="text-align:center;margin-bottom:40px">
+        <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">Case studies</div>
+        <h2 style="margin:0 0 12px;font-weight:900;font-size:clamp(24px,3.4vw,38px);line-height:1.05;letter-spacing:-0.02em">Hear it from the doctors.</h2>
+        <p style="margin:0 auto;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.7);max-width:620px">Each one walks through what their practice looked like before, what we filmed, and what changed in the schedule.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;align-items:stretch">
+        <div style="flex:1 1 320px;max-width:430px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);background:#17171a;overflow:hidden;display:flex;flex-direction:column">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#0c0c0d">
+            <iframe src="https://player.vimeo.com/video/1105584625?h=4aa23447d4&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Dr Davis GM Media Case Study" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+          </div>
+          <div style="padding:22px 24px;display:flex;align-items:center;justify-content:center;gap:14px">
+            <img src="assets/clients/jordan-davis-sm.jpg" alt="Dr. Jordan Davis" style="width:46px;height:46px;border-radius:999px;object-fit:cover;object-position:50% 22%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="color:#ec3013;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:4px">Case study</div>
+              <div style="font-size:16px;font-weight:800;letter-spacing:-0.01em">Dr. Jordan Davis</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1 1 320px;max-width:430px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);background:#17171a;overflow:hidden;display:flex;flex-direction:column">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#0c0c0d">
+            <iframe src="https://player.vimeo.com/video/1180596249?h=57550b2c38&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Sarah Winter Dental - Case Study" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+          </div>
+          <div style="padding:22px 24px;display:flex;align-items:center;justify-content:center;gap:14px">
+            <img src="assets/clients/sarah-winter-sm.jpg" alt="Dr. Sarah Winter" style="width:46px;height:46px;border-radius:999px;object-fit:cover;object-position:50% 25%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="color:#ec3013;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:4px">Case study</div>
+              <div style="font-size:16px;font-weight:800;letter-spacing:-0.01em">Dr. Sarah Winter</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1 1 320px;max-width:430px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);background:#17171a;overflow:hidden;display:flex;flex-direction:column">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#0c0c0d">
+            <iframe src="https://player.vimeo.com/video/1105584693?h=1c64b69d47&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Dr Spodak Case Review" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+          </div>
+          <div style="padding:22px 24px;display:flex;align-items:center;justify-content:center;gap:14px">
+            <img src="assets/clients/craig-spodak-sm.jpg" alt="Dr. Craig Spodak" style="width:46px;height:46px;border-radius:999px;object-fit:cover;object-position:50% 25%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="color:#ec3013;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:4px">Case study</div>
+              <div style="font-size:16px;font-weight:800;letter-spacing:-0.01em">Dr. Craig Spodak</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1 1 320px;max-width:430px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);background:#17171a;overflow:hidden;display:flex;flex-direction:column">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#0c0c0d">
+            <iframe src="https://player.vimeo.com/video/1107930166?h=2adbb7549a&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Dr. Tanner Brown" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+          </div>
+          <div style="padding:22px 24px;display:flex;align-items:center;justify-content:center;gap:14px">
+            <img src="assets/clients/tanner-brown-sm.jpg" alt="Dr. Tanner Brown" style="width:46px;height:46px;border-radius:999px;object-fit:cover;object-position:50% 22%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="color:#ec3013;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:4px">Case study</div>
+              <div style="font-size:16px;font-weight:800;letter-spacing:-0.01em">Dr. Tanner Brown</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1 1 320px;max-width:430px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);background:#17171a;overflow:hidden;display:flex;flex-direction:column">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#0c0c0d">
+            <iframe src="https://player.vimeo.com/video/1176725747?h=ddb570e4e3&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Dr Mickle Case Review" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+          </div>
+          <div style="padding:22px 24px;display:flex;align-items:center;justify-content:center;gap:14px">
+            <img src="assets/clients/ryan-mickle-sm.jpg" alt="Dr. Ryan Mickle" style="width:46px;height:46px;border-radius:999px;object-fit:cover;object-position:50% 20%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="color:#ec3013;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:4px">Case study</div>
+              <div style="font-size:16px;font-weight:800;letter-spacing:-0.01em">Dr. Ryan Mickle</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1 1 320px;max-width:430px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);background:#17171a;overflow:hidden;display:flex;flex-direction:column">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#0c0c0d">
+            <iframe src="https://player.vimeo.com/video/1107929540?h=13bf0da379&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Dr Mark Azer Case Study" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+          </div>
+          <div style="padding:22px 24px;display:flex;align-items:center;justify-content:center;gap:14px">
+            <img src="assets/clients/mark-azer-sm.jpg" alt="Dr. Mark Azer" style="width:46px;height:46px;border-radius:999px;object-fit:cover;object-position:50% 22%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="color:#ec3013;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:4px">Case study</div>
+              <div style="font-size:16px;font-weight:800;letter-spacing:-0.01em">Dr. Mark Azer</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1 1 320px;max-width:430px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);background:#17171a;overflow:hidden;display:flex;flex-direction:column">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#0c0c0d">
+            <iframe src="https://player.vimeo.com/video/1107930277?h=5e8718af07&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Dr Paradis Esi Case Study" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+          </div>
+          <div style="padding:22px 24px;display:flex;align-items:center;justify-content:center;gap:14px">
+            <img src="assets/clients/paradis-esi-sm.jpg" alt="Dr. Paradis Esi" style="width:46px;height:46px;border-radius:999px;object-fit:cover;object-position:50% 30%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="color:#ec3013;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:4px">Case study</div>
+              <div style="font-size:16px;font-weight:800;letter-spacing:-0.01em">Dr. Paradis Esi</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1 1 320px;max-width:430px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);background:#17171a;overflow:hidden;display:flex;flex-direction:column">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#0c0c0d">
+            <iframe src="https://player.vimeo.com/video/1213378242?h=4c82b9333f&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Dr. Jen Friedman Case Study" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+          </div>
+          <div style="padding:22px 24px;display:flex;align-items:center;justify-content:center;gap:14px">
+            <img src="assets/clients/jen.webp" alt="Dr. Jen Friedman" style="width:46px;height:46px;border-radius:999px;object-fit:cover;object-position:50% 30%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="color:#ec3013;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:4px">Case study</div>
+              <div style="font-size:16px;font-weight:800;letter-spacing:-0.01em">Dr. Jen Friedman</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1 1 320px;max-width:430px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);background:#17171a;overflow:hidden;display:flex;flex-direction:column">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#0c0c0d">
+            <iframe src="https://player.vimeo.com/video/1228943791?badge=0&amp;autopause=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="DEREK GREEN CASE STUDY" loading="lazy" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+          </div>
+          <div style="padding:22px 24px;display:flex;align-items:center;justify-content:center;gap:14px">
+            <img src="assets/clients/derek-green-sm.jpg" alt="Dr. Derek Green" style="width:46px;height:46px;border-radius:999px;object-fit:cover;object-position:50% 30%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="color:#ec3013;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:4px">Case study</div>
+              <div style="font-size:16px;font-weight:800;letter-spacing:-0.01em">Dr. Derek Green</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1 1 320px;max-width:430px;border-radius:20px;border:1px solid rgba(255,255,255,0.08);background:#17171a;overflow:hidden;display:flex;flex-direction:column">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#0c0c0d">
+            <iframe src="https://player.vimeo.com/video/1228947334?badge=0&amp;autopause=0&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" title="Chase Kelly Case Study" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+          </div>
+          <div style="padding:22px 24px;display:flex;align-items:center;justify-content:center;gap:14px">
+            <img src="assets/clients/chase-kelly-sm.jpg" alt="Dr. Chase Kelly" style="width:46px;height:46px;border-radius:999px;object-fit:cover;object-position:58% 30%;border:1px solid rgba(255,255,255,0.14);flex:none;display:block" />
+            <div>
+              <div style="color:#ec3013;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:4px">Case study</div>
+              <div style="font-size:16px;font-weight:800;letter-spacing:-0.01em">Dr. Chase Kelly</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;padding:88px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;align-items:stretch">
+      <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px">
+        <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:18px">What's included</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:7px;height:7px;border-radius:999px;background:#ec3013;margin-top:8px;flex:none"></span><span style="font-size:16px;line-height:1.55;color:rgba(255,255,255,0.85)">On-site film days at your practice, crew and gear included</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:7px;height:7px;border-radius:999px;background:#ec3013;margin-top:8px;flex:none"></span><span style="font-size:16px;line-height:1.55;color:rgba(255,255,255,0.85)">A viral content plan built for your market and your case mix</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:7px;height:7px;border-radius:999px;background:#ec3013;margin-top:8px;flex:none"></span><span style="font-size:16px;line-height:1.55;color:rgba(255,255,255,0.85)">Full production and editing, 12 posts published every month</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:7px;height:7px;border-radius:999px;background:#ec3013;margin-top:8px;flex:none"></span><span style="font-size:16px;line-height:1.55;color:rgba(255,255,255,0.85)">Instagram, TikTok, YouTube and Facebook — managed, not just handed over</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:7px;height:7px;border-radius:999px;background:#ec3013;margin-top:8px;flex:none"></span><span style="font-size:16px;line-height:1.55;color:rgba(255,255,255,0.85)">DM automation that books appointments from comments and messages</span></div>
+          <div style="display:flex;gap:12px;align-items:flex-start"><span style="width:7px;height:7px;border-radius:999px;background:#ec3013;margin-top:8px;flex:none"></span><span style="font-size:16px;line-height:1.55;color:rgba(255,255,255,0.85)">On-camera and capture coaching for your team, in person</span></div>
+        </div>
+      </div>
+      <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);background:#17171a;min-height:340px">
+        <video data-gm-loop="" autoplay="" data-gm-start="0" src="assets/broll/interview-setup.mp4" poster="assets/broll/poster-interview-setup.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,13,0.15) 0%,rgba(12,12,13,0) 45%,rgba(12,12,13,0.8) 100%)"></div>
+        <div style="position:absolute;left:24px;right:24px;bottom:24px">
+          <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:8px">On site</div>
+          <div style="font-size:17px;font-weight:800;color:#f5f4f2;line-height:1.35">Patient and doctor interviews, lit and framed by our crew</div>
+        </div>
+      </div>
+      <sc-if value="{{ showPricing }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:26px">
+          <div>
+            <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:18px">Investment</div>
+            <div style="display:flex;align-items:flex-end;gap:8px">
+              <span style="font-size:clamp(34px,4vw,48px);font-weight:900;letter-spacing:-0.03em;line-height:1;white-space:nowrap">{{ feeLabel }}</span>
+              <span style="font-size:17px;font-weight:700;color:rgba(255,255,255,0.5);padding-bottom:6px;flex:none;white-space:nowrap">/ month</span>
+            </div>
+            <div style="font-size:15.5px;color:rgba(255,255,255,0.7);margin-top:10px;line-height:1.6">{{ termLabel }} — priced on your practice size, case mix and shoot volume. Long enough for compounding to actually show up in the schedule. One team, one price, no à la carte.</div>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:22px">
+            <div style="font-size:15.5px;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:20px">Most practices cover it with a single full-arch or veneer case. Check it against your own numbers first.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:12px">
+              <a href="#book" style="background:#ec3013;color:#fff;font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:16px 28px;border-radius:999px" style-hover="background:#ff4d2e;color:#fff">Book a Call</a>
+              <a href="financial-model.html" style="border:1px solid rgba(255,255,255,0.22);color:#f5f4f2;font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:16px 28px;border-radius:999px" style-hover="background:rgba(255,255,255,0.06);color:#f5f4f2">Financial Model</a>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <div id="model" style="max-width:1100px;margin:0 auto;padding:88px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:44px">
+      <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">Financial model</div>
+      <h2 style="margin:0 0 12px;font-weight:900;font-size:clamp(24px,3.4vw,38px);line-height:1.05;letter-spacing:-0.02em;max-width:760px;text-wrap:balance">Don't take our word for it. Put your own numbers in.</h2>
+      <p style="margin:0 0 32px;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.7);max-width:620px">Average case value, new patients per month, case acceptance rate, patient lifetime value. The model returns your ROI, payback period, break-even patient count, and what standing still costs you over twelve months.</p>
+      <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;align-items:center">
+        <div>
+          <div style="font-size:11.5px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:12px">Example: 2 extra veneer cases a month</div>
+          <div style="display:flex;flex-wrap:wrap;gap:26px">
+            <div>
+              <div style="font-size:34px;font-weight:900;letter-spacing:-0.02em;color:#ec3013">4.2x</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:4px">first-year ROI</div>
+            </div>
+            <div>
+              <div style="font-size:34px;font-weight:900;letter-spacing:-0.02em;color:#f5f4f2">28 days</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:4px">payback period</div>
+            </div>
+            <div>
+              <div style="font-size:34px;font-weight:900;letter-spacing:-0.02em;color:#f5f4f2">1.1</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:4px">cases to break even</div>
+            </div>
+          </div>
+        </div>
+        <a href="financial-model.html" style="justify-self:end;background:#ec3013;color:#fff;font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:18px 30px;border-radius:999px" style-hover="background:#ff4d2e;color:#fff">Open the Model</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="faq" style="max-width:1100px;margin:0 auto;padding:88px 24px 0">
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:44px">
+      <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">Straight answers</div>
+      <h2 style="margin:0 0 40px;font-weight:900;font-size:clamp(24px,3.4vw,38px);line-height:1.05;letter-spacing:-0.02em">What dentists ask us on the call.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px">
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <h3 style="margin:0 0 10px;font-size:18px;font-weight:800;letter-spacing:-0.01em">"I hate being on camera."</h3>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">That is what we are for. We direct, we prompt, we cut around the awkward takes. You be great in the chair — the performance is our job, not yours.</p>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <h3 style="margin:0 0 10px;font-size:18px;font-weight:800;letter-spacing:-0.01em">"I already got burned by an agency."</h3>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">Fair. Most of them sold you posting, not producing, and never set foot in your practice. Ask us for the raw analytics from any client on this page before you decide anything.</p>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <h3 style="margin:0 0 10px;font-size:18px;font-weight:800;letter-spacing:-0.01em">"I found someone cheaper."</h3>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">You probably did. Cheaper usually means you film it, you approve it, you chase the DMs. Compare what each one costs you in cases, not in invoices.</p>
+        </div>
+        <div style="background:#17171a;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px">
+          <h3 style="margin:0 0 10px;font-size:18px;font-weight:800;letter-spacing:-0.01em">"How much of my time is this?"</h3>
+          <p style="margin:0;font-size:15.5px;line-height:1.6;color:rgba(255,255,255,0.7)">Film days on site, then effectively nothing. We plan, produce, publish and manage the inbound. No editing, no scheduling, no captions on your Sunday night.</p>
+        </div>
+      </div>
+      <a href="#" style="display:inline-block;margin-top:24px;border:1px solid rgba(255,255,255,0.22);color:#f5f4f2;font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:16px 28px;border-radius:999px" style-hover="background:rgba(255,255,255,0.06);color:#f5f4f2">Read the full FAQ</a>
+    </div>
+  </div>
+
+  <div style="margin-top:88px;position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);background:#0c0c0d">
+    <div style="position:relative;height:clamp(340px,46vw,540px);overflow:hidden;background:#0c0c0d">
+      <video data-gm-wall="0" data-gm-start="0" src="assets/broll/clinical-loupes.mp4" poster="assets/broll/poster-clinical-loupes.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block;opacity:1;transition:opacity 600ms ease;filter:grayscale(1) brightness(1.2) contrast(1.14)"></video>
+      <video data-gm-wall="1" data-gm-start="0" src="assets/broll/live-case.mp4" poster="assets/broll/poster-live-case.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block;opacity:0;transition:opacity 600ms ease;filter:grayscale(1) brightness(1.2) contrast(1.14)"></video>
+      <video data-gm-wall="2" data-gm-start="0" src="assets/broll/practice-walkthrough.mp4" poster="assets/broll/poster-practice-walkthrough.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block;opacity:0;transition:opacity 600ms ease;filter:grayscale(1) brightness(1.05) contrast(1.08)"></video>
+      <video data-gm-wall="4" data-gm-start="0" src="assets/broll/new-b-trim.mp4" poster="assets/broll/poster-new-b-trim.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block;opacity:0;transition:opacity 600ms ease;filter:grayscale(1) brightness(1.1) contrast(1.1)"></video>
+      <video data-gm-wall="3" data-gm-start="0" src="assets/broll/interview-lobby.mp4" poster="assets/broll/poster-interview-lobby.jpg" muted="" loop="" playsinline="" preload="metadata" disablepictureinpicture="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;display:block;opacity:0;transition:opacity 600ms ease;filter:grayscale(1) brightness(1.05) contrast(1.08)"></video>
+    </div>
+    <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,12,13,0.6) 0%,rgba(12,12,13,0.15) 40%,rgba(12,12,13,0.85) 100%)"></div>
+    <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;padding:0 24px;pointer-events:none">
+      <div style="color:#f5f4f2;font-weight:900;font-size:clamp(22px,3.2vw,36px);letter-spacing:-0.02em;line-height:1.1;text-shadow:0 4px 30px rgba(0,0,0,0.6)">Two days on site. Six months of content.</div>
+    </div>
+  </div>
+
+  <div id="book" style="background:#ec3013;padding:80px 24px">
+    <div style="max-width:1100px;margin:0 auto;text-align:center">
+      <h2 style="margin:0 auto 18px;font-weight:900;font-size:clamp(30px,5vw,54px);line-height:1.02;letter-spacing:-0.02em;color:#fff;max-width:820px;text-wrap:balance">Time to start building your brand.</h2>
+      <p style="margin:0 auto 34px;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.85);max-width:560px">30 minutes. We look at your practice and see if this system actually makes sense to implement. If it doesn't, we'll tell you.</p>
+      <a href="#calendar" style="display:inline-block;background:#0c0c0d;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:20px 40px;border-radius:999px;box-shadow:0 12px 34px rgba(0,0,0,0.3)" style-hover="background:#17171a;color:#fff">Book Your Call</a>
+      <div id="calendar" style="margin-top:40px">
+        <div style="background:#fff;border-radius:20px;overflow:hidden;max-width:900px;margin:0 auto;box-shadow:0 18px 50px rgba(0,0,0,0.28)">
+          <iframe src="https://calendly.com/d/cymv-7md-9sg/gm-media-discovery-call?hide_gdpr_banner=1&amp;text_color=000000&amp;primary_color=ff1700" title="Book a discovery call with GM Media" loading="lazy" style="width:100%;min-width:320px;height:700px;border:0;display:block"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.08)">
+    <div style="max-width:1100px;margin:0 auto;padding:44px 24px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center"><img src="assets/gm-media-logo.webp" alt="GM Media" style="height:30px;width:auto;display:block;opacity:0.85" /></div>
+      <div style="display:flex;flex-wrap:wrap;gap:22px">
+        <a href="gages-story.html" class="gm-foot-link" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Gage's Story</a>
+            <a href="client-breakdowns.html" class="gm-foot-link" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Breakdowns</a>
+        <a href="#case-studies" class="gm-foot-link" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Case Studies</a>
+        <a href="financial-model.html" class="gm-foot-link" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Financial Model</a>
+        <a href="#faq" class="gm-foot-link" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">FAQ</a>
+      </div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5)">© 2026 GM Media</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showPricing&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Offer&quot;},&quot;monthlyFeeMin&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:2500,&quot;min&quot;:500,&quot;max&quot;:15000,&quot;step&quot;:250,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Offer&quot;},&quot;monthlyFeeMax&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:5000,&quot;min&quot;:500,&quot;max&quot;:25000,&quot;step&quot;:250,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Offer&quot;},&quot;contractMonths&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:12,&quot;min&quot;:3,&quot;max&quot;:24,&quot;step&quot;:1,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Offer&quot;}}">
+class Component extends DCLogic {
+  state = { wide: true, menuOpen: false };
+
+  componentDidMount() {
+    this.measure = () => {
+      const w = (this.rootEl && this.rootEl.clientWidth) || window.innerWidth;
+      const wide = w >= 900;
+      if (wide !== this.state.wide) this.setState({ wide, menuOpen: false });
+    };
+    this.rootEl = document.querySelector('[data-nav-root]') || document.body;
+    this.measure();
+    window.addEventListener('resize', this.measure);
+    this.startRays();
+    this.startBroll();
+    this.startLoopClips();
+    this.startWall();
+    this.startReveals();
+    if (window.ResizeObserver) {
+      this.ro = new ResizeObserver(this.measure);
+      this.ro.observe(this.rootEl);
+    }
+  }
+
+
+  startReveals() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const root = document.getElementById('dc-root') || document.body;
+    const hero = document.getElementById('top');
+    const skip = el => !el || (hero && hero.contains(el)) || el.closest('[data-nav-bar]') || el.closest('.gm-marquee-track');
+
+    const groups = [];
+    // section headlines: eyebrow, h2, lead paragraph move together
+    Array.prototype.forEach.call(root.querySelectorAll('h2'), h2 => {
+      if (skip(h2)) return;
+      const g = [];
+      const prev = h2.previousElementSibling;
+      if (prev && prev.tagName === 'DIV' && prev.children.length === 0) g.push(prev);
+      g.push(h2);
+      const next = h2.nextElementSibling;
+      if (next && next.tagName === 'P') g.push(next);
+      groups.push(g);
+    });
+    // grid children stagger in
+    Array.prototype.forEach.call(root.querySelectorAll('div'), grid => {
+      if (skip(grid) || grid.children.length < 2) return;
+      if (getComputedStyle(grid).display !== 'grid') return;
+      const kids = Array.prototype.slice.call(grid.children);
+      if (kids.length >= 2 && kids.length <= 10) groups.push(kids);
+    });
+
+    const vh = window.innerHeight || 800;
+    const seen = new Set();
+    let pending = [];
+    groups.forEach(g => {
+      g.forEach((el, i) => {
+        if (seen.has(el)) return;
+        seen.add(el);
+        if (el.getBoundingClientRect().top < vh * 0.94) return; // on screen at load: no animation
+        el.setAttribute('data-rv', '');
+        const step = Math.min(i, 4);
+        if (step) el.setAttribute('data-rv-d', String(step));
+        pending.push(el);
+      });
+    });
+    if (!pending.length) return;
+
+    const sweep = () => {
+      const h = window.innerHeight || 800;
+      const next = [];
+      for (const el of pending) {
+        const r = el.getBoundingClientRect();
+        if (r.top < h * 0.88) el.setAttribute('data-rv', 'in');
+        else next.push(el);
+      }
+      pending = next;
+      if (!pending.length) stop();
+    };
+    const stop = () => {
+      window.removeEventListener('scroll', sweep);
+      window.removeEventListener('resize', sweep);
+      if (this.revealTimer) clearInterval(this.revealTimer);
+    };
+    window.addEventListener('scroll', sweep, { passive: true });
+    window.addEventListener('resize', sweep);
+    // timer drives it too: scroll events and rAF are unreliable in embedded previews
+    this.revealTimer = setInterval(sweep, 150);
+    sweep();
+  }
+
+  startWall() {
+    const els = Array.prototype.slice.call(document.querySelectorAll('[data-gm-wall]'));
+    if (!els.length) return;
+    const starts = els.map(el => parseFloat(el.getAttribute('data-gm-start') || '0') || 0);
+    const ends = els.map(el => parseFloat(el.getAttribute('data-gm-end') || '0') || 0);
+    let idx = 0, visible = false;
+    els.forEach((el, i) => {
+      el.muted = true; el.loop = true; el.setAttribute('playsinline', '');
+      el.addEventListener('loadedmetadata', () => { if (el.currentTime < starts[i]) el.currentTime = starts[i]; });
+      el.addEventListener('timeupdate', () => {
+        if (starts[i] && el.currentTime < starts[i] - 0.15) el.currentTime = starts[i];
+        if (ends[i] && el.currentTime >= ends[i]) { try { el.currentTime = starts[i]; } catch (e) {} }
+      });
+    });
+    // only ONE tile decodes at a time — the rest show their poster frame
+    const activate = (i) => {
+      els.forEach((el, j) => {
+        if (j === i) return;
+        el.style.opacity = '0';
+        el.pause();
+      });
+      const el = els[i];
+      const go = () => {
+        if (el.currentTime < starts[i]) { try { el.currentTime = starts[i]; } catch (e) {} }
+        el.style.opacity = '1';
+        const p = el.play();
+        if (p && p.catch) p.catch(() => {});
+      };
+      if (el.preload !== 'auto') {
+        el.preload = 'auto';
+        el.addEventListener('loadeddata', go, { once: true });
+        el.load();
+      } else go();
+    };
+    const step = () => { if (!visible) return; idx = (idx + 1) % els.length; activate(idx); };
+    if (window.IntersectionObserver) {
+      this.wallIo = new IntersectionObserver(entries => {
+        const on = entries.some(e => e.isIntersecting);
+        if (on === visible) return;
+        visible = on;
+        if (visible) { activate(idx); this.wallTimer = setInterval(step, 5200); }
+        else { clearInterval(this.wallTimer); els.forEach(el => el.pause()); }
+      }, { threshold: 0.25 });
+      this.wallIo.observe(els[0].parentElement);
+    } else {
+      visible = true; activate(0); this.wallTimer = setInterval(step, 5200);
+    }
+  }
+
+  startLoopClips() {
+    const els = Array.prototype.slice.call(document.querySelectorAll('[data-gm-loop]'))
+      .filter(el => el.dataset.gmBound !== '1');
+    if (!els.length) return;
+    els.forEach(el => {
+      el.dataset.gmBound = '1';
+      const start = parseFloat(el.getAttribute('data-gm-start') || '0') || 0;
+      el.muted = true; el.loop = true; el.setAttribute('playsinline', '');
+      el.addEventListener('loadedmetadata', () => { if (el.currentTime < start) el.currentTime = start; });
+      const endAttr = parseFloat(el.getAttribute('data-gm-end') || '0') || 0;
+      el.addEventListener('timeupdate', () => {
+        if (endAttr && el.currentTime >= endAttr) { try { el.currentTime = start; } catch (e) {} }
+      });
+      el.addEventListener('seeked', () => {}, { once: true });
+    });
+    if (!window.IntersectionObserver) { els.forEach(el => { el.preload = 'auto'; el.play().catch(() => {}); }); return; }
+    if (this.loopIo) { els.forEach(el => this.loopIo.observe(el)); return; }
+    this.loopIo = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const el = e.target;
+        if (e.isIntersecting) {
+          const start = parseFloat(el.getAttribute('data-gm-start') || '0') || 0;
+          const go = () => {
+            if (start && el.currentTime < start) { try { el.currentTime = start; } catch (err) {} }
+            const p = el.play();
+            if (p && p.catch) p.catch(() => {});
+          };
+          if (el.preload !== 'auto') {
+            el.preload = 'auto';
+            el.addEventListener('loadeddata', go, { once: true });
+            el.load();
+          } else go();
+        } else el.pause();
+      });
+    }, { threshold: 0.2 });
+    els.forEach(el => this.loopIo.observe(el));
+  }
+
+  componentDidUpdate() {
+    this.startLoopClips();
+  }
+
+  startBroll() {
+    const clips = [
+      { id: 'gm-clip-0', start: 0, end: 3.4, caption: 'Directing the doctor in the operatory' },
+      { id: 'gm-clip-1', start: 0, end: 5.5, caption: 'Running an interview in the consult room' },
+      { id: 'gm-clip-2', start: 0, end: 5.5, caption: 'Close-ups of the doctor at work' },
+      { id: 'gm-clip-3', start: 0, end: 5.5, caption: 'Documenting a live case, chairside' },
+      { id: 'gm-clip-4', start: 0, end: 5.5, caption: 'Doctor interview in natural light' },
+      { id: 'gm-clip-5', start: 0, end: 3.1, caption: 'Walking the practice on camera' },
+      { id: 'gm-clip-6', start: 0, end: 5.0, caption: 'Lights and camera set for the interview' },
+      { id: 'gm-clip-7', start: 0, end: 5.3, caption: 'Coaching the delivery, take after take' }
+    ];
+    const els = clips.map(c => document.getElementById(c.id));
+    if (els.some(e => !e)) return;
+    const caption = document.getElementById('gm-clip-caption');
+    const bar = document.getElementById('gm-clip-progress');
+    const thumbs = clips.map((c, i) => document.getElementById('gm-thumb-' + i));
+    let active = 0, visible = false, switching = false;
+
+    els.forEach((el, i) => {
+      el.muted = true; el.loop = false; el.setAttribute('playsinline', '');
+      el.addEventListener('loadedmetadata', () => { if (el.currentTime < clips[i].start) el.currentTime = clips[i].start; });
+      el.addEventListener('timeupdate', () => {
+        const c = clips[i];
+        if (i !== active) return;
+        const span = c.end - c.start;
+        if (bar) bar.style.width = Math.max(0, Math.min(100, ((el.currentTime - c.start) / span) * 100)) + '%';
+        if (el.currentTime >= c.end) go((active + 1) % els.length);
+      });
+    });
+
+    const paint = () => {
+      els.forEach((el, i) => { el.style.opacity = i === active ? '1' : '0'; });
+      thumbs.forEach((t, i) => {
+        if (!t) return;
+        t.style.borderColor = i === active ? 'rgba(236,48,19,0.9)' : 'rgba(255,255,255,0.14)';
+        const img = t.querySelector('img');
+        if (img) img.style.opacity = i === active ? '0.95' : '0.5';
+      });
+      if (caption) caption.textContent = clips[active].caption;
+    };
+
+    const go = (next) => {
+      if (switching || next === active) return;
+      switching = true;
+      const el = els[next], c = clips[next];
+      if (el.preload !== 'auto') el.preload = 'auto';
+      try { el.currentTime = c.start; } catch (e) {}
+      const prev = active;
+      active = next;
+      els[prev].pause();
+      paint();
+      if (bar) bar.style.width = '0%';
+      const p = el.play();
+      if (p && p.catch) p.catch(() => {});
+      setTimeout(() => {
+        if (prev !== active) { try { els[prev].currentTime = clips[prev].start; } catch (e) {} }
+        switching = false;
+      }, 750);
+    };
+
+    this.brollPlay = () => {
+      const el = els[active], c = clips[active];
+      if (el.currentTime < c.start || el.currentTime >= c.end) { try { el.currentTime = c.start; } catch (e) {} }
+      const p = el.play();
+      if (p && p.catch) p.catch(() => {});
+    };
+    this.brollPick = (i) => { if (i === active) { this.brollPlay(); return; } go(i); };
+
+    if (window.IntersectionObserver) {
+      this.brollIo = new IntersectionObserver((entries) => {
+        for (const e of entries) {
+          visible = e.isIntersecting;
+          if (visible) this.brollPlay(); else els.forEach(el => el.pause());
+        }
+      }, { threshold: 0.15 });
+      this.brollIo.observe(els[0].parentElement);
+    } else {
+      this.brollPlay();
+    }
+    paint();
+  }
+
+  startRays() {
+    const canvas = document.getElementById('gm-rays');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let W = 0, H = 0, ox = 0, oy = 0, dpr = 1;
+    const rays = [];
+    const streaks = [];
+
+    const build = () => {
+      const r = canvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = Math.max(r.width, 1); H = Math.max(r.height, 1);
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ox = W * 0.62; oy = H * 1.06;
+      const maxR = Math.hypot(Math.max(ox, W - ox), oy) * 1.15;
+      rays.length = 0;
+      for (let i = 0; i < 30; i++) {
+        const a = -Math.PI / 2 + (i / 29 - 0.5) * Math.PI * 1.42 + (Math.random() - 0.5) * 0.05;
+        rays.push({ a, alpha: 0.03 + Math.random() * 0.055, w: Math.random() < 0.25 ? 1.4 : 0.8, maxR });
+      }
+      streaks.length = 0;
+      const count = reduce ? 0 : 16;
+      for (let i = 0; i < count; i++) streaks.push(spawn(maxR, true));
+    };
+
+    const spawn = (maxR, seed) => ({
+      a: -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.45,
+      r: seed ? Math.random() * maxR : maxR * (0.06 + Math.random() * 0.1),
+      len: 90 + Math.random() * 220,
+      speed: 1.6 + Math.random() * 4.4,
+      w: Math.random() < 0.3 ? 1.9 : 1.1,
+      alpha: 0.35 + Math.random() * 0.5,
+      maxR
+    });
+
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+      for (const ray of rays) {
+        const ex = ox + Math.cos(ray.a) * ray.maxR, ey = oy + Math.sin(ray.a) * ray.maxR;
+        const g = ctx.createLinearGradient(ox, oy, ex, ey);
+        g.addColorStop(0, 'rgba(255,255,255,0)');
+        g.addColorStop(0.25, 'rgba(255,255,255,' + ray.alpha + ')');
+        g.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.strokeStyle = g; ctx.lineWidth = ray.w;
+        ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ex, ey); ctx.stroke();
+      }
+      for (let i = 0; i < streaks.length; i++) {
+        const s = streaks[i];
+        const cx = ox + Math.cos(s.a) * s.r, cy = oy + Math.sin(s.a) * s.r;
+        const tr = Math.max(s.r - s.len, 0);
+        const tx = ox + Math.cos(s.a) * tr, ty = oy + Math.sin(s.a) * tr;
+        const fade = 1 - Math.min(s.r / s.maxR, 1);
+        const g = ctx.createLinearGradient(tx, ty, cx, cy);
+        g.addColorStop(0, 'rgba(236,48,19,0)');
+        g.addColorStop(1, 'rgba(255,77,46,' + (s.alpha * fade).toFixed(3) + ')');
+        ctx.strokeStyle = g; ctx.lineWidth = s.w; ctx.lineCap = 'round';
+        ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(cx, cy); ctx.stroke();
+        s.r += s.speed;
+        if (s.r - s.len > s.maxR) streaks[i] = spawn(s.maxR, false);
+      }
+      if (running) this.raf = requestAnimationFrame(draw);
+    };
+
+    let running = false;
+    const start = () => {
+      if (running || reduce || document.hidden) return;
+      running = true;
+      this.raf = requestAnimationFrame(draw);
+    };
+    const stop = () => {
+      running = false;
+      if (this.raf) cancelAnimationFrame(this.raf);
+    };
+
+    this.rebuildRays = build;
+    build();
+    if (reduce) { draw(); return; }
+    if (window.IntersectionObserver) {
+      this.rayIo = new IntersectionObserver(entries => {
+        entries.some(e => e.isIntersecting) ? start() : stop();
+      }, { threshold: 0 });
+      this.rayIo.observe(canvas.parentElement || canvas);
+    } else start();
+    this.rayVis = () => { document.hidden ? stop() : start(); };
+    document.addEventListener('visibilitychange', this.rayVis);
+    window.addEventListener('resize', build);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.measure);
+    if (this.rebuildRays) window.removeEventListener('resize', this.rebuildRays);
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this.brollIo) this.brollIo.disconnect();
+    if (this.loopIo) this.loopIo.disconnect();
+    if (this.rayIo) this.rayIo.disconnect();
+    if (this.rayVis) document.removeEventListener('visibilitychange', this.rayVis);
+    if (this.wallIo) this.wallIo.disconnect();
+    if (this.wallTimer) clearInterval(this.wallTimer);
+    if (this.ro) this.ro.disconnect();
+  }
+
+  renderVals() {
+    const feeMin = this.props.monthlyFeeMin ?? 2500;
+    const feeMax = this.props.monthlyFeeMax ?? 5000;
+    const money = n => '$' + (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+    const months = this.props.contractMonths ?? 12;
+    return {
+      pick0: () => this.brollPick && this.brollPick(0),
+      pick1: () => this.brollPick && this.brollPick(1),
+      pick2: () => this.brollPick && this.brollPick(2),
+      pick3: () => this.brollPick && this.brollPick(3),
+      pick4: () => this.brollPick && this.brollPick(4),
+      pick5: () => this.brollPick && this.brollPick(5),
+      pick6: () => this.brollPick && this.brollPick(6),
+      pick7: () => this.brollPick && this.brollPick(7),
+      wideNav: this.state.wide,
+      narrowNav: !this.state.wide,
+      menuOpen: !this.state.wide && this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      showPricing: this.props.showPricing ?? true,
+      feeLabel: money(feeMin) + '–' + money(feeMax),
+      termLabel: months + '-month engagement'
+    };
+  }
+}
+</script>
+</body>
+</html>

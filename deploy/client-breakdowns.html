@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280"><rect width="400" height="280" fill="#0c0c0d"></rect><circle cx="200" cy="140" r="60" fill="#ec3013"></circle><text x="200" y="150" font-family="Arial" font-size="34" font-weight="900" fill="#fff" text-anchor="middle">GM</text></svg></template>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ext-resource-dependency" content="assets/clients/jordan-davis-sm.jpg">
+<meta name="ext-resource-dependency" content="assets/clients/sarah-winter-sm.jpg">
+<meta name="ext-resource-dependency" content="assets/clients/paradis-esi-sm.jpg">
+<meta name="ext-resource-dependency" content="assets/clients/mark-azer-sm.jpg">
+<meta name="ext-resource-dependency" content="assets/clients/craig-spodak-sm.jpg">
+<meta name="ext-resource-dependency" content="assets/clients/jen.webp">
+<meta name="ext-resource-dependency" content="assets/clients/tanner-brown-sm.jpg">
+<meta name="ext-resource-dependency" content="assets/clients/ryan-mickle-sm.jpg">
+<meta name="ext-resource-dependency" content="assets/clients/derek-green-sm.jpg">
+<meta name="ext-resource-dependency" content="assets/clients/chase-kelly-sm.jpg">
+<meta name="ext-resource-dependency" content="assets/logos/luca-aesthetic-brand.png">
+<meta name="ext-resource-dependency" content="assets/logos/sarah-winter-dental-white.png">
+<meta name="ext-resource-dependency" content="assets/logos/race-track-smiles.png">
+<meta name="ext-resource-dependency" content="assets/logos/spodak-dental-group-white.png">
+<meta name="ext-resource-dependency" content="assets/logos/bulletproof-podcast.png">
+<meta name="ext-resource-dependency" content="assets/logos/rock-pediatric-dentistry.png">
+<meta name="ext-resource-dependency" content="assets/logos/cova-dental-white.png">
+<meta name="ext-resource-dependency" content="assets/logos/good-company-dental-white.png">
+<meta name="ext-resource-dependency" content="assets/logos/woodside-dental-group-white.png">
+<meta name="ext-resource-dependency" content="assets/logos/kelly-dental-white.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #0c0c0d; }
+  body { font-family: Archivo, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #ec3013; text-decoration: none; }
+  a:hover { color: #ff4d2e; }
+  ::selection { background: #ec3013; color: #fff; }
+  .gm-foot-link:hover { color: rgba(255,255,255,0.85) !important; }
+  .gm-rail::-webkit-scrollbar { height: 6px; width: 6px; }
+  .gm-rail::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.16); border-radius: 999px; }
+  [data-rv] { opacity: 0; transform: translateY(16px); transition: opacity 640ms cubic-bezier(0.22,1,0.36,1), transform 640ms cubic-bezier(0.22,1,0.36,1); }
+  [data-rv="in"] { opacity: 1; transform: none; }
+  [data-rv-d="1"] { transition-delay: 70ms; }
+  [data-rv-d="2"] { transition-delay: 140ms; }
+  [data-rv-d="3"] { transition-delay: 210ms; }
+  [data-rv-d="4"] { transition-delay: 280ms; }
+  @media (prefers-reduced-motion: reduce) {
+    [data-rv] { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</helmet>
+
+<div data-nav-root="" style="background:#0c0c0d;color:#f5f4f2;min-height:100vh;overflow-x:hidden">
+
+  <div style="position:sticky;top:0;z-index:50;background:rgba(12,12,13,0.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.08)">
+    <div style="max-width:1180px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="index.html" aria-label="GM Media" style="display:flex;align-items:center;flex:none"><img src="assets/gm-media-logo.webp" alt="GM Media" style="height:27px;width:auto;display:block"></a>
+      <div style="display:flex;align-items:center;gap:26px;flex-wrap:nowrap">
+        <sc-if value="{{ wideNav }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;align-items:center;gap:26px">
+            <a href="gages-story.html" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">Gage's Story</a>
+            <a href="client-breakdowns.html" style="color:#f5f4f2;font-size:13.5px;font-weight:700;white-space:nowrap">Breakdowns</a>
+            <a href="financial-model.html" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">Financial Model</a>
+            <a href="index.html#faq" style="color:rgba(255,255,255,0.7);font-size:13.5px;font-weight:600;white-space:nowrap">FAQ</a>
+          </div>
+        </sc-if>
+        <a href="#book" style="background:#ec3013;color:#fff;font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:14px 22px;border-radius:999px;box-shadow:0 6px 20px rgba(236,48,19,0.28);white-space:nowrap" style-hover="background:#ff4d2e;color:#fff">Book a Call</a>
+        <sc-if value="{{ narrowNav }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ toggleMenu }}" aria-label="Menu" style="width:46px;height:46px;flex:none;border-radius:999px;border:1px solid rgba(255,255,255,0.22);background:transparent;color:#f5f4f2;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px" style-hover="background:rgba(255,255,255,0.06)">
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+            <span style="width:18px;height:2px;background:#f5f4f2;display:block"></span>
+          </button>
+        </sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid rgba(255,255,255,0.08);padding:14px 24px 22px;display:flex;flex-direction:column;gap:2px">
+        <a href="gages-story.html" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">Gage's Story</a>
+        <a href="client-breakdowns.html" onClick="{{ closeMenu }}" style="color:#f5f4f2;font-size:16px;font-weight:700;padding:14px 0;min-height:44px;display:flex;align-items:center">Breakdowns</a>
+        <a href="financial-model.html" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">Financial Model</a>
+        <a href="index.html#faq" onClick="{{ closeMenu }}" style="color:rgba(255,255,255,0.7);font-size:16px;font-weight:600;padding:14px 0;min-height:44px;display:flex;align-items:center">FAQ</a>
+      </div>
+    </sc-if>
+  </div>
+
+  <div id="top" style="border-bottom:1px solid rgba(255,255,255,0.08)">
+    <div style="max-width:1180px;margin:0 auto;padding:64px 24px 52px">
+      <div style="color:#ec3013;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:16px">Client breakdowns</div>
+      <h1 style="margin:0 0 16px;font-weight:900;font-size:clamp(34px,6vw,62px);line-height:1.0;letter-spacing:-0.03em;max-width:900px;text-wrap:balance">Every practice. Every number. Open the books.</h1>
+      <p style="margin:0;font-size:17.5px;line-height:1.6;color:rgba(255,255,255,0.7);max-width:620px;text-wrap:pretty">What changed in their schedule, the work we published, and a direct link to the account so you can judge it yourself.</p>
+    </div>
+  </div>
+
+  <div style="border-bottom:1px solid rgba(255,255,255,0.08);background:#0c0c0d">
+    <div style="max-width:1180px;margin:0 auto;padding:40px 24px 34px">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:14px;margin-bottom:18px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Where they are</div>
+        <div style="font-size:14.5px;color:rgba(255,255,255,0.55);line-height:1.5">Hover a dot to see the city.</div>
+      </div>
+      <iframe src="practice-map.html" title="Map of GM Media client practices across the United States" loading="lazy" style="width:100%;height:clamp(380px,46vw,540px);border:0;display:block;background:#0c0c0d"></iframe>
+      <div style="margin-top:34px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.08);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;align-items:start">
+        <div>
+          <h2 style="margin:0 0 14px;font-size:clamp(21px,2.6vw,29px);font-weight:900;letter-spacing:-0.02em;line-height:1.12;text-wrap:balance">This list is short on purpose.</h2>
+          <p style="margin:0;font-size:16.5px;line-height:1.65;color:rgba(255,255,255,0.7);max-width:560px;text-wrap:pretty">We turn down practices that aren't a fit. The ones we take on get a team of eight working on them directly — filming, editing, publishing and the DM automation all run in house. Nothing is handed to a contractor, and nothing runs off a template.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:baseline;gap:14px;padding:16px 20px;border:1px solid rgba(255,255,255,0.08);border-radius:14px;background:#17171a">
+            <span style="font-size:26px;font-weight:900;letter-spacing:-0.03em;color:#ec3013;line-height:1;flex:none">8</span>
+            <span style="font-size:14.5px;font-weight:600;color:rgba(255,255,255,0.7);line-height:1.45">People on the team. The same ones on every account.</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:14px;padding:16px 20px;border:1px solid rgba(255,255,255,0.08);border-radius:14px;background:#17171a">
+            <span style="font-size:26px;font-weight:900;letter-spacing:-0.03em;color:#ec3013;line-height:1;flex:none">0</span>
+            <span style="font-size:14.5px;font-weight:600;color:rgba(255,255,255,0.7);line-height:1.45">Work sent to outside contractors or offshore editors.</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:14px;padding:16px 20px;border:1px solid rgba(255,255,255,0.08);border-radius:14px;background:#17171a">
+            <span style="font-size:26px;font-weight:900;letter-spacing:-0.03em;color:#ec3013;line-height:1;flex:none">1</span>
+            <span style="font-size:14.5px;font-weight:600;color:rgba(255,255,255,0.7);line-height:1.45">Industry. We only work with dental practices.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ showChips }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width:1180px;margin:0 auto;padding:44px 24px 0">
+    <div class="gm-rail" style="display:flex;gap:10px;overflow-x:auto;padding-bottom:14px;margin-bottom:34px;scrollbar-width:thin">
+      <sc-for list="{{ chips }}" as="c" hint-placeholder-count="8">
+        <button type="button" onClick="{{ c.select }}" style="{{ c.chipStyle }}">
+          <span role="img" aria-label="{{ c.short }}" style="{{ c.photoStyle }}"></span>
+          <span>{{ c.short }}</span>
+        </button>
+      </sc-for>
+      <a href="#calendar" style="display:flex;align-items:center;gap:9px;flex:none;padding:8px 16px 8px 9px;min-height:44px;border-radius:999px;border:1px dashed rgba(236,48,19,0.55);background:rgba(236,48,19,0.07);text-decoration:none;font-size:13.5px;font-weight:800;color:#f5f4f2;white-space:nowrap">
+        <span aria-hidden="true" style="width:30px;height:30px;border-radius:999px;flex:none;border:1px dashed rgba(236,48,19,0.6);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#ec3013">+</span>
+        <span>Your practice next</span>
+      </a>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="max-width:1180px;margin:0 auto;padding:44px 24px 20px">
+    <div style="display:grid;grid-template-columns:{{ splitCols }};gap:28px;align-items:start">
+
+      <div style="display:flex;flex-direction:column;gap:8px;position:{{ railPos }};top:88px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);padding:0 4px 8px">{{ countLabel }}</div>
+        <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+          <button type="button" onClick="{{ r.select }}" style="{{ r.rowStyle }}">
+            <span role="img" aria-label="{{ r.name }}" style="{{ r.photoStyle }}"></span>
+            <span style="display:flex;flex-direction:column;gap:3px;min-width:0;text-align:left">
+              <span style="font-size:14.5px;font-weight:800;letter-spacing:-0.01em;color:#f5f4f2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span>
+              <span style="font-size:12px;font-weight:700;color:{{ r.badgeColor }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.badge }}</span>
+            </span>
+          </button>
+        </sc-for>
+        <a href="#calendar" style="display:flex;align-items:center;gap:12px;padding:11px 12px;margin-top:4px;border-radius:14px;border:1px dashed rgba(236,48,19,0.55);background:rgba(236,48,19,0.07);text-decoration:none" style-hover="background:rgba(236,48,19,0.16);border-color:#ec3013">
+          <span aria-hidden="true" style="width:40px;height:40px;border-radius:999px;flex:none;border:1px dashed rgba(236,48,19,0.6);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;color:#ec3013">+</span>
+          <span style="display:flex;flex-direction:column;gap:3px;min-width:0;text-align:left">
+            <span style="font-size:14.5px;font-weight:900;letter-spacing:-0.01em;color:#f5f4f2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Your practice next</span>
+            <span style="font-size:12px;font-weight:700;color:#ec3013;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Book a call</span>
+          </span>
+        </a>
+      </div>
+
+      <div style="border:1px solid rgba(255,255,255,0.08);border-radius:22px;background:#17171a;overflow:hidden">
+
+        <div style="padding:30px 30px 26px;border-bottom:1px solid rgba(255,255,255,0.08)">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:18px">
+            <span role="img" aria-label="{{ active.name }}" style="{{ active.photoStyle }}"></span>
+            <div style="min-width:0;flex:1 1 200px">
+              <h2 style="margin:0 0 6px;font-size:clamp(23px,3vw,31px);font-weight:900;letter-spacing:-0.02em;line-height:1.1">{{ active.name }}</h2>
+              <div style="font-size:14.5px;color:rgba(255,255,255,0.55);font-weight:600">{{ active.practice }}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:12px;flex:none;margin-left:auto">
+              <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:flex-end">
+                <sc-if value="{{ active.hasLogo }}" hint-placeholder-val="{{ true }}">
+                  <span role="img" aria-label="{{ active.practice }}" style="{{ active.logoStyle }}"></span>
+                </sc-if>
+                <sc-if value="{{ active.hasLogo2 }}" hint-placeholder-val="{{ false }}">
+                  <span style="width:1px;align-self:stretch;min-height:56px;background:rgba(255,255,255,0.5);display:block;flex:none"></span>
+                </sc-if>
+                <sc-if value="{{ active.hasLogo2 }}" hint-placeholder-val="{{ false }}">
+                  <span role="img" aria-label="{{ active.logo2Label }}" style="{{ active.logo2Style }}"></span>
+                </sc-if>
+              </div>
+              <sc-if value="{{ active.hasBadge }}" hint-placeholder-val="{{ true }}">
+                <div style="font-size:11.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:#ec3013;border:1px solid rgba(236,48,19,0.35);border-radius:999px;padding:9px 16px;white-space:nowrap">{{ active.badge }}</div>
+              </sc-if>
+            </div>
+          </div>
+          <p style="margin:20px 0 0;font-size:16.5px;line-height:1.6;color:rgba(255,255,255,0.78);max-width:660px;text-wrap:pretty">{{ active.summary }}</p>
+        </div>
+
+        <sc-if value="{{ active.hasStats }}" hint-placeholder-val="{{ true }}">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border-bottom:1px solid rgba(255,255,255,0.08)">
+            <sc-for list="{{ active.stats }}" as="s" hint-placeholder-count="2">
+              <div style="padding:26px 30px;border-right:1px solid rgba(255,255,255,0.06);min-width:0">
+                <div style="font-size:clamp(22px,3.4vw,36px);font-weight:900;letter-spacing:-0.025em;color:#ec3013;line-height:1.04;overflow-wrap:anywhere">{{ s.v }}</div>
+                <div style="margin-top:8px;font-size:12.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5)">{{ s.l }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <div style="padding:30px">
+          <div style="font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:16px">In their words</div>
+          <div style="{{ active.videoFrameStyle }}">
+            <iframe src="{{ active.videoSrc }}" title="{{ active.videoTitle }}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen="" style="position:absolute;inset:0;width:100%;height:100%;border:0;display:block"></iframe>
+          </div>
+        </div>
+
+        <sc-if value="{{ active.showReels }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:0 30px 30px">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:16px">
+            <div style="font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.4)">Reels we published</div>
+            <div style="font-size:12.5px;color:rgba(255,255,255,0.35);font-weight:600">{{ active.reelsNote }}</div>
+          </div>
+          <sc-if value="{{ active.hasReels }}" hint-placeholder-val="{{ true }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px">
+              <sc-for list="{{ active.reels }}" as="reel" hint-placeholder-count="3">
+                <div style="position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);background:#121214">
+                  <image-slot id="{{ reel.slotId }}" shape="rect" fit="cover" placeholder="Drop reel thumbnail"></image-slot>
+                  <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,12,13,0) 38%,rgba(12,12,13,0.82) 100%)"></div>
+                  <div style="position:absolute;left:14px;right:14px;bottom:13px;pointer-events:none;display:flex;flex-direction:column;gap:3px">
+                    <div style="font-size:clamp(23px,3.4vw,32px);font-weight:900;letter-spacing:-0.03em;line-height:1;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,0.5)">{{ reel.views }}</div>
+                    <div style="font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7)">{{ reel.viewsLabel }}</div>
+                  </div>
+                  <a href="{{ reel.url }}" target="_blank" rel="noopener" aria-label="Open {{ reel.label }}" style="position:absolute;top:11px;right:11px;width:32px;height:32px;border-radius:999px;background:rgba(12,12,13,0.62);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center" style-hover="background:#ec3013;border-color:#ec3013">
+                    <span style="width:0;height:0;border-left:9px solid #fff;border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:3px;display:block"></span>
+                  </a>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ active.noReels }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px">
+              <sc-for list="{{ reelSlots }}" as="slot" hint-placeholder-count="3">
+                <div style="aspect-ratio:9/16;border-radius:14px;border:1px dashed rgba(255,255,255,0.16);background:#121214;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:16px;text-align:center">
+                  <div style="width:42px;height:42px;border-radius:999px;border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center">
+                    <span style="width:0;height:0;border-left:11px solid rgba(255,255,255,0.4);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px"></span>
+                  </div>
+                  <span style="font-size:12.5px;font-weight:700;color:rgba(255,255,255,0.4)">{{ slot.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ active.hasSocial }}" hint-placeholder-val="{{ true }}">
+        <div style="padding:26px 30px;border-top:1px solid rgba(255,255,255,0.08);background:#141416;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+          <div style="display:flex;flex-direction:column;gap:6px;max-width:420px">
+            <div style="font-size:14.5px;color:rgba(255,255,255,0.6);line-height:1.5">See the accounts the way a patient sees them.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:13.5px;font-weight:700;color:rgba(255,255,255,0.85)">
+              <span>{{ active.handleLabel }}</span>
+              <sc-if value="{{ active.hasTiktok }}" hint-placeholder-val="{{ true }}">
+                <span style="color:rgba(255,255,255,0.55)">{{ active.tiktokHandle }}</span>
+              </sc-if>
+            </div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <a href="{{ active.instagram }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:#ec3013;color:#fff;font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:15px 26px;border-radius:999px;white-space:nowrap" style-hover="background:#ff4d2e;color:#fff">{{ active.instagramLabel }}</a>
+            <sc-if value="{{ active.hasTiktok }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ active.tiktok }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:transparent;color:#f5f4f2;border:1px solid rgba(255,255,255,0.24);font-size:12.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:15px 26px;border-radius:999px;white-space:nowrap" style-hover="background:rgba(255,255,255,0.08);color:#fff">TikTok</a>
+            </sc-if>
+          </div>
+        </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </div>
+
+  <div id="book" style="margin-top:72px;background:#ec3013;padding:72px 24px">
+    <div style="max-width:1180px;margin:0 auto;text-align:center">
+      <h2 data-reveal="" style="margin:0 auto 18px;font-weight:900;font-size:clamp(28px,4.6vw,50px);line-height:1.02;letter-spacing:-0.02em;color:#fff;max-width:820px;text-wrap:balance">Want your practice on this page?</h2>
+      <p data-reveal="" data-rv-d="1" style="margin:0 auto 34px;font-size:17px;line-height:1.6;color:rgba(255,255,255,0.85);max-width:560px">30 minutes. We look at your practice and see if this system actually makes sense to implement. If it doesn't, we'll tell you.</p>
+      <a href="#calendar" style="display:inline-block;background:#0c0c0d;color:#fff;font-size:13.5px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:20px 40px;border-radius:999px;box-shadow:0 12px 34px rgba(0,0,0,0.3)" style-hover="background:#17171a;color:#fff">Book Your Call</a>
+      <div id="calendar" style="margin-top:40px">
+        <div style="background:#fff;border-radius:20px;overflow:hidden;max-width:900px;margin:0 auto;box-shadow:0 18px 50px rgba(0,0,0,0.28)">
+          <iframe src="https://calendly.com/d/cymv-7md-9sg/gm-media-discovery-call?hide_gdpr_banner=1&amp;text_color=000000&amp;primary_color=ff1700" title="Book a discovery call with GM Media" loading="lazy" style="width:100%;min-width:320px;height:700px;border:0;display:block"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,255,255,0.08)">
+    <div style="max-width:1180px;margin:0 auto;padding:44px 24px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center"><img src="assets/gm-media-logo.webp" alt="GM Media" style="height:30px;width:auto;display:block;opacity:0.85"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:22px">
+        <a href="index.html" class="gm-foot-link" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Home</a>
+        <a href="gages-story.html" class="gm-foot-link" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Gage's Story</a>
+        <a href="client-breakdowns.html" class="gm-foot-link" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Breakdowns</a>
+        <a href="financial-model.html" class="gm-foot-link" style="color:rgba(255,255,255,0.5);font-size:13px;font-weight:600">Financial Model</a>
+      </div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.5)">© 2026 GM Media</div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180}}">
+const CLIENTS = [
+  {
+    id: 'davis', name: 'Dr. Jordan Davis', short: 'Davis', practice: 'Luca Aesthetic',
+    logo: 'assets/logos/luca-aesthetic-brand.png', logoHeight: '58px', logoWidth: '110px',
+    location: 'Woods Cross, Utah',
+    photo: 'assets/clients/jordan-davis-sm.jpg', focus: '50% 22%',
+    badge: 'Booked 1 year out',
+    summary: 'Booked out a full year on cosmetic cases, and tripled his prices in the process.',
+    stats: [{ v: '100M+', l: 'Views produced' }, { v: '250K+', l: 'Followers produced' }, { v: '1 year', l: 'Booked out in advance' }, { v: '3x', l: 'Case pricing' }],
+    video: '1105584625', hash: '4aa23447d4', videoTitle: 'Dr Davis GM Media Case Study',
+    instagram: 'https://www.instagram.com/drjordandavis_/',
+    handle: '@drjordandavis_',
+    tiktok: 'https://www.tiktok.com/@drjordandavis',
+    tiktokHandle: '@drjordandavis',
+    reels: [
+      { url: 'https://www.instagram.com/reel/DM8y9X9JUen/', views: '10.7M' },
+      { url: 'https://www.instagram.com/reel/DDNbZ4nJ9t1/', views: '9.4M' },
+      { url: 'https://www.instagram.com/reel/C0ccpo2ShTr/', views: '16.7M' }
+    ]
+  },
+  {
+    id: 'winter', name: 'Dr. Sarah Winter', short: 'Winter', practice: 'Sarah Winter Dental',
+    logo: 'assets/logos/sarah-winter-dental-white.png', logoHeight: '34px', logoWidth: '112px',
+    photo: 'assets/clients/sarah-winter-sm.jpg', focus: '50% 25%',
+    badge: 'Top seller',
+    summary: 'Became the top seller of veneer cases in her DSO, driven entirely by social media.',
+    stats: [
+      { v: '1M+', l: 'Views generated' },
+      { v: '31.5K', l: 'Followers' },
+      { v: '#1', l: 'Veneer cases in her DSO' }
+    ],
+    video: '1180596249', hash: '57550b2c38', videoTitle: 'Sarah Winter Dental - Case Study',
+    instagram: 'https://www.instagram.com/sarahwinterdental/',
+    handle: '@sarahwinterdental',
+    reels: [
+      { url: 'https://www.instagram.com/reel/DNOgHBwy6xW/', views: '125K' },
+      { url: 'https://www.instagram.com/reel/DYfRYTKRyV7/', views: '104K' },
+      { url: 'https://www.instagram.com/reel/DY2jmk9Pv7O/', views: '562K' }
+    ]
+  },
+  {
+    id: 'esi', name: 'Dr. Paradis Esi', short: 'Esi', practice: 'General and cosmetic',
+    logo: 'assets/logos/race-track-smiles.png', logoHeight: '63px', logoWidth: '150px',
+    photo: 'assets/clients/paradis-esi-sm.jpg', focus: '50% 30%',
+    badge: '15M+ views',
+    summary: 'More than 15 million views in his second month working with us, along with a measurable increase in patient acceptance rates.',
+    stats: [{ v: '15M+', l: 'Views in month two' }, { v: 'Month 2', l: 'Time to result' }, { v: '+20%', l: 'Case acceptance rate' }],
+    video: '1107930277', hash: '5e8718af07', videoTitle: 'Dr Paradis Esi Case Study',
+    instagram: 'https://www.instagram.com/racetracksmiles/',
+    handle: '@racetracksmiles',
+    reels: [
+      { url: 'https://www.instagram.com/reel/DKxN8sMRDXU/', views: '11.6M' },
+      { url: 'https://www.instagram.com/reel/DLPwhEkxB7z/', views: '785K' },
+      { url: 'https://www.instagram.com/reel/DN1ThnXwr92/', views: '365K' }
+    ]
+  },
+  {
+    id: 'azer', name: 'Dr. Mark Azer', short: 'Azer', practice: 'Cova Dental',
+    logo: 'assets/logos/cova-dental-white.png', logoHeight: '48px', logoWidth: '134px',
+    photo: 'assets/clients/mark-azer-sm.jpg', focus: '50% 22%',
+    badge: '3x revenue',
+    summary: 'Had to hire new staff to handle new patient flow.',
+    stats: [{ v: '3x', l: 'Practice revenue' }, { v: 'New hires', l: 'To handle new patient flow' }, { v: 'Top local', l: 'Dentist in his market' }],
+    video: '1107929540', hash: '13bf0da379', videoTitle: 'Dr Mark Azer Case Study',
+    instagram: 'https://www.instagram.com/cova.dental/',
+    handle: '@cova.dental',
+    reels: [
+      { url: 'https://www.instagram.com/reel/DK1uSCmuqgl/', views: '196K' },
+      { url: 'https://www.instagram.com/reel/DYXr3ZKPzKh/', views: '101K' },
+      { url: 'https://www.instagram.com/reel/DQsKdgYkvUc/', label: 'Branding video' }
+    ]
+  },
+  {
+    id: 'spodak', name: 'Dr. Craig Spodak', short: 'Spodak', practice: 'Spodak Dental',
+    logo: 'assets/logos/spodak-dental-group-white.png', logoHeight: '74px', logoWidth: '143px',
+    logo2: 'assets/logos/bulletproof-podcast.png', logo2Height: '74px', logo2Width: '118px',
+    logo2Label: 'Bulletproof Dental Practice podcast',
+    photo: 'assets/clients/craig-spodak-sm.jpg', focus: '50% 25%',
+    badge: '23K+ followers',
+    summary: 'Grew to over 23K Instagram followers, building trust across every doctor in the practice. Refers GM Media to his podcast listeners and mastermind members.',
+    stats: [{ v: '23K+', l: 'Instagram followers' }, { v: '4M+', l: 'Views generated' }, { v: 'Refers GM Media', l: 'To his podcast listeners and mastermind members' }],
+    video: '1105584693', hash: '1c64b69d47', videoTitle: 'Dr Spodak Case Review',
+    instagram: 'https://www.instagram.com/spodakdental/',
+    handle: '@spodakdental',
+    reels: [
+      { url: 'https://www.instagram.com/reel/DSWo0HpEoxs/', views: '2.6M' },
+      { url: 'https://www.instagram.com/reel/DZfzBscNITG/', views: '156K' },
+      { url: 'https://www.instagram.com/reel/Cy33s38AJhl/', views: '383K' }
+    ]
+  },
+  {
+    id: 'friedman', name: 'Dr. Jen Friedman', short: 'Friedman', practice: 'Pediatric practice',
+    logo: 'assets/logos/rock-pediatric-dentistry.png', logoHeight: '64px', logoWidth: '104px',
+    photo: 'assets/clients/jen.webp', focus: '50% 30%',
+    badge: '6,600% growth',
+    summary: 'A 6,600% increase in views in her very first month.',
+    stats: [{ v: '6,600%', l: 'View growth (compared to doing social media on her own)' }, { v: 'Month 1', l: 'Time to result' }, { v: 'Brand deals', l: 'Landed multiple product brand deals from our content' }],
+    reels: [
+      { url: 'https://www.tiktok.com/@rockpediatricdentistry/video/7654271955507383565', views: '1.7M' },
+      { url: 'https://www.instagram.com/reel/Ddb6BkNBdmV/', views: '125K' },
+      { url: 'https://www.tiktok.com/@rockpediatricdentistry/video/7658337402192268575', views: '218K' }
+    ],
+    video: '1213378242', hash: '4c82b9333f', videoTitle: 'Dr. Jen Friedman Case Study',
+    instagram: 'https://www.instagram.com/rockpediatricdentistry/',
+    handle: '@rockpediatricdentistry'
+  },
+  {
+    id: 'brown', name: 'Dr. Tanner Brown', short: 'Brown', practice: 'Good Company Dental',
+    logo: 'assets/logos/good-company-dental-white.png', logoHeight: '68px', logoWidth: '94px',
+    photo: 'assets/clients/tanner-brown-sm.jpg', focus: '50% 22%',
+    badge: '',
+    summary: 'Incredible shoot day experience.',
+    stats: [],
+    video: '1107930166', hash: '2adbb7549a', videoTitle: 'Dr. Tanner Brown',
+    instagram: 'https://www.instagram.com/goodcompanydental/',
+    handle: '@goodcompanydental',
+    tiktok: 'https://www.tiktok.com/@drtannerbrown',
+    tiktokHandle: '@drtannerbrown',
+    reels: [
+      { url: 'https://www.instagram.com/reel/DdXZbO_O9pa/', views: '1M' },
+      { url: 'https://www.tiktok.com/@drtannerbrown/video/7502516923498777898', views: '237K' },
+      { url: 'https://www.instagram.com/reel/DP2Pt3_kjp8/', views: '1.4M' }
+    ]
+  },
+  {
+    id: 'green', name: 'Dr. Derek Green', short: 'Green', practice: 'Woodside Dental Group',
+    logo: 'assets/logos/woodside-dental-group-white.png', logoHeight: '39px', logoWidth: '190px',
+    photo: 'assets/clients/derek-green-sm.jpg', focus: '50% 30%',
+    badge: '',
+    summary: 'Patient quality increase.',
+    stats: [{ v: 'Higher', l: 'Quality of leads and patients' }, { v: 'Top Alaska dentist', l: 'One of the most recognized in the state' }, { v: 'Increased', l: 'Patient acceptance rate' }],
+    video: '1228943791', videoTitle: 'DEREK GREEN CASE STUDY',
+    instagram: 'https://www.instagram.com/woodside.dentalgroup/',
+    handle: '@woodside.dentalgroup',
+    reels: [
+      { url: 'https://www.instagram.com/reel/DaLyCvZShvJ/', views: '82.8K' },
+      { url: 'https://www.instagram.com/reel/DcgtLHHxpyN/', views: '85.6K' },
+      { url: 'https://www.instagram.com/reel/Dadw63oSYfl/', views: '10.4K' }
+    ]
+  },
+  {
+    id: 'kelly', name: 'Dr. Chase Kelly', short: 'Kelly', practice: 'Kelly Dental',
+    logo: 'assets/logos/kelly-dental-white.png', logoHeight: '46px', logoWidth: '168px',
+    photo: 'assets/clients/chase-kelly-sm.jpg', focus: '56% 26%', zoom: '170%',
+    badge: '',
+    summary: 'Over 100K views his first month.',
+    stats: [{ v: '150K+', l: 'Views generated first month' }, { v: 'Most recognized in area', l: 'One of the most recognized dentists locally' }, { v: 'High volume', l: 'High quality content' }],
+    video: '1228947334', videoTitle: 'Chase Kelly Case Study',
+    instagram: 'https://www.instagram.com/drchasekelly/',
+    handle: '@drchasekelly',
+    reels: [
+      { url: 'https://www.instagram.com/reel/DY0ZbxFRRHZ/', views: '91.7K' },
+      { url: 'https://www.instagram.com/reel/DcPZqHdAsiZ/', views: '65.2K' },
+      { url: 'https://www.instagram.com/reel/DctnJWwgcnK/', views: '46.2K' }
+    ]
+  },
+  {
+    id: 'mickle', name: 'Dr. Ryan Mickle', short: 'Mickle', practice: 'Dental practice owner',
+    photo: 'assets/clients/ryan-mickle-sm.jpg', focus: '50% 20%',
+    badge: '',
+    summary: 'Top of funnel marketing elevated.',
+    stats: [{ v: 'All streams', l: 'Saw increase to all marketing streams from organic content' }, { v: 'Expanded', l: 'Practice expanded and hired new staff' }],
+    hideReels: true, hideSocial: true,
+    video: '1176725747', hash: 'ddb570e4e3', videoTitle: 'Dr Mickle Case Review',
+    instagram: ''
+  }
+];
+
+class Component extends DCLogic {
+  state = { wide: true, menuOpen: false, active: 0 };
+
+  componentDidMount() {
+    this.measure = () => {
+      const w = (this.rootEl && this.rootEl.clientWidth) || window.innerWidth;
+      const wide = w >= 900;
+      if (wide !== this.state.wide) this.setState({ wide, menuOpen: false });
+    };
+    this.rootEl = document.querySelector('[data-nav-root]') || document.body;
+    this.measure();
+    window.addEventListener('resize', this.measure);
+    this.startReveals();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.measure);
+    if (this.revealTimer) clearInterval(this.revealTimer);
+  }
+
+  startReveals() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const root = document.querySelector('[data-nav-root]') || document.body;
+    const vh = window.innerHeight || 800;
+    let pending = [];
+    Array.prototype.forEach.call(root.querySelectorAll('[data-reveal]'), el => {
+      if (el.getBoundingClientRect().top < vh * 0.94) return;
+      el.setAttribute('data-rv', '');
+      pending.push(el);
+    });
+    if (!pending.length) return;
+    const sweep = () => {
+      const h = window.innerHeight || 800;
+      const next = [];
+      for (const el of pending) {
+        if (el.getBoundingClientRect().top < h * 0.88) el.setAttribute('data-rv', 'in');
+        else next.push(el);
+      }
+      pending = next;
+      if (!pending.length) {
+        window.removeEventListener('scroll', sweep);
+        if (this.revealTimer) clearInterval(this.revealTimer);
+      }
+    };
+    window.addEventListener('scroll', sweep, { passive: true });
+    this.revealTimer = setInterval(sweep, 150);
+    sweep();
+  }
+
+  renderVals() {
+    const wide = this.state.wide;
+    const i = this.state.active;
+    const c = CLIENTS[i] || CLIENTS[0];
+    const select = n => () => this.setState({ active: n });
+
+    const chipBase = 'display:flex;align-items:center;gap:9px;flex:none;padding:7px 15px 7px 7px;border-radius:999px;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:700;white-space:nowrap;transition:background 160ms ease,border-color 160ms ease;';
+    const rowBase = 'display:flex;align-items:center;gap:13px;width:100%;padding:11px 14px;border-radius:14px;cursor:pointer;font-family:inherit;text-align:left;transition:background 160ms ease,border-color 160ms ease;';
+
+    return {
+      wideNav: wide,
+      narrowNav: !wide,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+
+      splitCols: wide ? '292px minmax(0,1fr)' : 'minmax(0,1fr)',
+      railPos: wide ? 'sticky' : 'static',
+      countLabel: CLIENTS.length + ' practice result breakdowns',
+
+      showChips: !wide,
+      chips: wide ? [] : CLIENTS.map((x, n) => ({
+        short: x.short,
+        photoStyle: 'width:30px;height:30px;border-radius:999px;flex:none;display:block;border:1px solid rgba(255,255,255,0.18);background-image:url("' + x.photo + '");background-size:' + (x.zoom || 'cover') + ';background-position:' + (x.focus || '50% 50%') + ';',
+        select: select(n),
+        chipStyle: chipBase + (n === i
+          ? 'background:rgba(236,48,19,0.14);border:1px solid rgba(236,48,19,0.5);color:#f5f4f2;'
+          : 'background:#17171a;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.65);')
+      })),
+
+      rows: wide ? CLIENTS.map((x, n) => ({
+        name: x.name,
+        photoStyle: 'width:40px;height:40px;border-radius:999px;flex:none;display:block;border:1px solid rgba(255,255,255,0.16);background-image:url("' + x.photo + '");background-size:' + (x.zoom || 'cover') + ';background-position:' + (x.focus || '50% 50%') + ';',
+        badge: x.badge || x.summary || 'Case review',
+        badgeColor: n === i ? '#ec3013' : 'rgba(255,255,255,0.45)',
+        select: select(n),
+        rowStyle: rowBase + (n === i
+          ? 'background:rgba(236,48,19,0.12);border:1px solid rgba(236,48,19,0.45);'
+          : 'background:#17171a;border:1px solid rgba(255,255,255,0.08);')
+      })) : [],
+
+      active: {
+        name: c.name,
+        practice: c.location ? c.practice + ' · ' + c.location : c.practice,
+        showReels: !c.hideReels,
+        hasSocial: !c.hideSocial,
+        hasLogo: !!c.logo,
+        hasLogo2: !!c.logo2,
+        logo2Label: c.logo2Label || '',
+        logo2Style: 'height:' + (c.logo2Height || '52px') + ';width:' + (c.logo2Width || '52px') + ';border-radius:10px;display:block;background-image:url("' + (c.logo2 || '') + '");background-size:contain;background-position:center;background-repeat:no-repeat',
+        logoStyle: 'height:' + (c.logoHeight || '28px') + ';width:' + (c.logoWidth || '110px') + ';max-width:230px;display:block;background-image:url("' + (c.logo || '') + '");background-size:contain;background-repeat:no-repeat;background-position:100% 50%;',
+        photoStyle: 'width:66px;height:66px;border-radius:999px;flex:none;display:block;border:1px solid rgba(255,255,255,0.16);background-image:url("' + c.photo + '");background-size:' + (c.zoom || 'cover') + ';background-position:' + (c.focus || '50% 50%') + ';',
+        badge: c.badge,
+        hasBadge: !!c.badge,
+        summary: c.summary,
+        stats: c.stats,
+        hasStats: c.stats.length > 0,
+        videoSrc: 'https://player.vimeo.com/video/' + c.video + '?' + (c.hash ? 'h=' + c.hash + '&' : '') + 'title=0&byline=0&portrait=0&dnt=1',
+        videoFrameStyle: 'position:relative;width:100%;background:#0c0c0d;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);' + (c.vertical ? 'aspect-ratio:9/16;max-width:330px;margin:0 auto' : 'aspect-ratio:16/9'),
+        videoTitle: c.videoTitle,
+        instagram: c.instagram || '#',
+        instagramLabel: c.instagram ? 'View on Instagram' : 'Instagram — handle needed',
+        handleLabel: c.handle || 'Handle needed',
+        hasTiktok: !!c.tiktok,
+        tiktok: c.tiktok || '#',
+        tiktokHandle: c.tiktokHandle || '',
+        hasReels: !!(c.reels && c.reels.length),
+        noReels: !(c.reels && c.reels.length),
+        reelsNote: c.reels && c.reels.length ? 'Drop a thumbnail, or tap ▸ to open on Instagram' : 'Clips pending',
+        reels: (c.reels || []).map((r, n) => ({
+          url: r.url,
+          views: r.views || '—',
+          viewsLabel: r.label || (r.views ? 'views' : 'views pending'),
+          label: 'Reel ' + (n + 1) + ' on ' + (/tiktok\.com/.test(r.url) ? 'TikTok' : 'Instagram'),
+          slotId: 'reel-' + c.id + '-' + (n + 1)
+        }))
+      },
+
+      reelSlots: [{ label: 'Reel 1' }, { label: 'Reel 2' }, { label: 'Reel 3' }]
+    };
+  }
+}
+
+</script>
+</body>
+</html>
